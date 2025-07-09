@@ -211,33 +211,80 @@
             color: #333;
         }
         
-        /* Mobile responsive design */
+        /* Mobile responsive design - HIGH SPECIFICITY */
         @media (max-width: 768px) {
-            /* Search input mobile */
-            #searchInput {
-                max-width: 100%;
-                margin-top: 15px;
-                font-size: 16px; /* Prevents zoom on iOS */
+            /* Force mobile navbar */
+            .navbar {
+                padding: 10px 15px !important;
+                flex-wrap: wrap;
             }
             
-            /* Cards mobile */
+            .nav-links {
+                gap: 8px !important;
+                flex-wrap: wrap;
+            }
+            
+            .nav-item {
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+            }
+            
+            .nav-item svg {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            
+            /* Force mobile hero */
+            .hero {
+                padding: 60px 0 40px 0 !important;
+            }
+            
+            .hero-content {
+                padding: 0 20px !important;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1em !important;
+                margin-bottom: 20px !important;
+            }
+            
+            /* Search input mobile */
+            #searchInput {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin-top: 15px !important;
+                font-size: 16px !important; /* Prevents zoom on iOS */
+                padding: 15px !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Cards mobile - FORCE FULL WIDTH */
             .opportunities-container {
-                padding: 20px 15px;
-                gap: 20px;
+                padding: 20px 15px !important;
+                gap: 20px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
             }
             
             .card {
-                width: 100%;
-                max-width: 100%;
-                margin: 0;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                box-sizing: border-box !important;
             }
             
             .card h3 {
-                font-size: 18px;
+                font-size: 18px !important;
             }
             
             .card .tags, .card .commitment {
-                font-size: 13px;
+                font-size: 13px !important;
             }
             
             /* Mini-page mobile */
@@ -290,31 +337,50 @@
             }
         }
         
-        /* Extra small mobile devices */
+        /* Extra small mobile devices - FORCE STYLES */
         @media (max-width: 480px) {
-            .mini-page-title {
-                font-size: 1.8em;
+            .navbar {
+                padding: 8px 10px !important;
             }
             
-            .mini-page-wrapper {
-                padding: 15px 10px;
+            .nav-links {
+                gap: 5px !important;
             }
             
-            .mini-page-description {
-                padding: 20px 15px;
-                font-size: 15px;
+            .nav-item {
+                padding: 4px 8px !important;
+                font-size: 11px !important;
             }
             
-            .back-button {
-                padding: 10px 16px;
-                font-size: 13px;
+            .hero h1 {
+                font-size: 2em !important;
             }
             
-            .tag {
-                padding: 6px 12px;
-                font-size: 12px;
+            .hero .subtitle {
+                font-size: 1em !important;
             }
-        }
+            
+            #searchInput {
+                padding: 12px !important;
+                font-size: 16px !important;
+            }
+            
+            .opportunities-container {
+                padding: 15px 10px !important;
+                gap: 15px !important;
+            }
+            
+            .card {
+                padding: 15px !important;
+            }
+            
+            .card h3 {
+                font-size: 16px !important;
+            }
+            
+            .card .tags, .card .commitment {
+                font-size: 12px !important;
+            }
         
         /* Smooth transitions */
         .main-content {
@@ -532,7 +598,7 @@
                 </div>
             </div>
             <div class="right">
-                <a class="nav-item" href="https://instagram.com/projectruby.mentorship">
+                <a class="nav-item">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="lucide lucide-instagram">
