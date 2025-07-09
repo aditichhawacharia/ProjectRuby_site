@@ -499,7 +499,7 @@
       "name": "Intel International Science and Engineering Fair (ISEF)",
       "description": "The world's largest pre-college science competition. Winners receive significant recognition from top universities and often get direct recruitment. Demonstrates exceptional research ability and scientific thinking.",
       "difficulty": "Extremely High",
-      "imageURL": "https://www.competitionsciences.org/wp-content/uploads/2017/07/isef_logo.png",
+      "image": "https://www.competitionsciences.org/wp-content/uploads/2017/07/isef_logo.png",
       "interests": ["Biology", "Chemistry", "Physics", "Engineering", "Computer Science", "Mathematics"],
       "tags": ["International", "Research", "STEM", "Competition", "Award", "Prestigious"],
       "timeCommitment": "12-18 months of intensive research and preparation"
@@ -509,7 +509,7 @@
       "name": "USA Biology Olympiad (USABO)",
       "description": "National team selection leads to international competition. Top performers often receive full scholarships to elite universities. Shows mastery of advanced biological concepts.",
       "difficulty": "Very High",
-      "imageURL": "https://static.wixstatic.com/media/a9c49e_b4d0d21cc52f41f9971e770626910ee6~mv2.png/v1/fill/w_420,h_190,al_c,lg_1,q_85/a9c49e_b4d0d21cc52f41f9971e770626910ee6~mv2.png",
+      "image": "https://static.wixstatic.com/media/a9c49e_b4d0d21cc52f41f9971e770626910ee6~mv2.png/v1/fill/w_420,h_190,al_c,lg_1,q_85/a9c49e_b4d0d21cc52f41f9971e770626910ee6~mv2.png",
       "interests": ["Biology", "Medicine", "Research", "Life Sciences"],
       "tags": ["National", "Olympiad", "Biology", "Competition", "Elite"],
       "timeCommitment": "2-3 years of preparation, 6-8 hours per week"
@@ -519,7 +519,7 @@
       "name": "Start a Nonprofit Organization",
       "description": "Founding and successfully running a nonprofit demonstrates leadership, social impact, and organizational skills. Shows initiative and ability to create meaningful change.",
       "difficulty": "High",
-      "imageURL": "https://i0.wp.com/paulbergman.org/wp-content/uploads/2023/10/non-profit.jpg?fit=900%2C675&ssl=1",
+      "image": "https://i0.wp.com/paulbergman.org/wp-content/uploads/2023/10/non-profit.jpg?fit=900%2C675&ssl=1",
       "interests": ["Social Justice", "Community Service", "Leadership", "Business"],
       "tags": ["Leadership", "Nonprofit", "Social Impact", "Entrepreneurship"],
       "timeCommitment": "2-4 years, 10-15 hours per week"
@@ -529,7 +529,7 @@
       "name": "Simons Research Program",
       "description": "Prestigious summer research program at Stony Brook University. Participants work with PhD mentors on cutting-edge research. High publication rate and strong college placement.",
       "difficulty": "Very High",
-      "imageURL": "https://static.wixstatic.com/media/a9c49e_e785cfd931b04d9ca2c0d7231570e949~mv2.webp/v1/fill/w_600,h_450,al_c,lg_1,q_80/a9c49e_e785cfd931b04d9ca2c0d7231570e949~mv2.webp",
+      "image": "https://static.wixstatic.com/media/a9c49e_e785cfd931b04d9ca2c0d7231570e949~mv2.webp/v1/fill/w_600,h_450,al_c,lg_1,q_80/a9c49e_e785cfd931b04d9ca2c0d7231570e949~mv2.webp",
       "interests": ["STEM Research", "Mathematics", "Computer Science", "Physics"],
       "tags": ["Research", "Summer Program", "Prestigious", "STEM", "Mentorship"],
       "timeCommitment": "7-week summer program, plus follow-up research"
@@ -539,7 +539,7 @@
       "name": "Scholastic Art & Writing Awards",
       "description": "National competition recognizing outstanding creative work. Gold Medal winners often receive college scholarships and recognition from admissions officers.",
       "difficulty": "High",
-      "imageURL": "https://www.montclairartmuseum.org/sites/default/files/2020-04/scholastic_awards_logo_rgb.png",
+      "image": "https://www.montclairartmuseum.org/sites/default/files/2020-04/scholastic_awards_logo_rgb.png",
       "interests": ["Creative Writing", "Journalism", "Art", "Literature"],
       "tags": ["Writing", "Art", "Competition", "National", "Scholarship"],
       "timeCommitment": "6-12 months to develop portfolio"
@@ -549,7 +549,7 @@
       "name": "USA Computing Olympiad (USACO)",
       "description": "Premier programming competition leading to national team selection. Platinum level achievement is highly valued by top CS programs and tech companies.",
       "difficulty": "Very High",
-      "imageURL": "https://i0.wp.com/junilearning.com/wp-content/uploads/2023/12/Frame_35-min.png?fit=800%2C800&ssl=1",
+      "image": "https://i0.wp.com/junilearning.com/wp-content/uploads/2023/12/Frame_35-min.png?fit=800%2C800&ssl=1",
       "interests": ["Computer Science", "Programming", "Algorithms", "Mathematics"],
       "tags": ["Programming", "Competition", "Olympiad", "Computer Science"],
       "timeCommitment": "2-3 years of practice, 8-12 hours per week"
@@ -559,7 +559,7 @@
       "name": "Congressional App Challenge",
       "description": "Nationwide competition where students create apps addressing local issues. Winners are recognized by Congress and often receive congressional internships.",
       "difficulty": "Moderate to High",
-      "imageURL": "https://thompson.house.gov/sites/evo-subsites/thompson.house.gov/files/featured_image/Logo%20with%20Dome%20%28Transparent%29_0.png",
+      "image": "https://thompson.house.gov/sites/evo-subsites/thompson.house.gov/files/featured_image/Logo%20with%20Dome%20%28Transparent%29_0.png",
       "interests": ["Computer Science", "Civic Engagement", "Social Innovation"],
       "tags": ["App Development", "Congress", "Social Impact", "Technology"],
       "timeCommitment": "3-6 months to develop and submit app"
@@ -569,7 +569,7 @@
       "name": "United World Colleges (UWC)",
       "description": "International education program promoting cross-cultural understanding. Graduates have exceptional college placement rates and strong global networks.",
       "difficulty": "Extremely High",
-      "imageURL": "https://www.uwc.org/_site/data/images/news/823/main-UWC_International_Secondary_RGB_screen.jpg",
+      "image": "https://www.uwc.org/_site/data/images/news/823/main-UWC_International_Secondary_RGB_screen.jpg",
       "interests": ["International Relations", "Cultural Exchange", "Global Issues"],
       "tags": ["International", "Scholarship", "Cultural Exchange", "Elite"],
       "timeCommitment": "2-year program (grades 11-12)"
@@ -579,7 +579,7 @@
       "name": "American Mathematics Competitions (AMC/AIME/USAMO)",
       "description": "Progression through AMC 10/12, AIME, and USAMO demonstrates exceptional mathematical ability. USAMO qualification is highly prestigious for STEM programs.",
       "difficulty": "Very High",
-      "imageURL": "https://static.wixstatic.com/media/978144_4daf6eb7764e4b87820d7fbdeb17b6ed~mv2.png/v1/fill/w_568,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/978144_4daf6eb7764e4b87820d7fbdeb17b6ed~mv2.png",
+      "image": "https://static.wixstatic.com/media/978144_4daf6eb7764e4b87820d7fbdeb17b6ed~mv2.png/v1/fill/w_568,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/978144_4daf6eb7764e4b87820d7fbdeb17b6ed~mv2.png",
       "interests": ["Mathematics", "Problem Solving", "Logic"],
       "tags": ["Mathematics", "Competition", "Olympiad", "STEM"],
       "timeCommitment": "2-4 years of preparation, 5-10 hours per week"
@@ -589,7 +589,7 @@
       "name": "DECA International Competition",
       "description": "Premier business competition with international recognition. Top performers often receive business school scholarships and internship opportunities.",
       "difficulty": "High",
-      "imageURL": "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/639a016311dd593fdc86f9ef_DECA%20Logo%20Stack%20Blue.png",
+      "image": "https://cdn.prod.website-files.com/635c470cc81318fc3e9c1e0e/639a016311dd593fdc86f9ef_DECA%20Logo%20Stack%20Blue.png",
       "interests": ["Business", "Marketing", "Finance", "Entrepreneurship"],
       "tags": ["Business", "Competition", "Leadership", "International"],
       "timeCommitment": "1-2 years, 6-8 hours per week during season"
@@ -599,7 +599,7 @@
       "name": "National YoungArts Foundation",
       "description": "Prestigious arts competition providing mentorship and performance opportunities. Winners often receive full scholarships to top arts programs.",
       "difficulty": "Very High",
-      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxIhlnJ2anVsZGBYx4Dg6D8jntRcN8lqD7LQ&s",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxIhlnJ2anVsZGBYx4Dg6D8jntRcN8lqD7LQ&s",
       "interests": ["Visual Arts", "Music", "Theater", "Dance", "Creative Writing"],
       "tags": ["Arts", "Competition", "Mentorship", "Scholarship"],
       "timeCommitment": "2-3 years to develop portfolio/performance"
@@ -609,7 +609,7 @@
       "name": "Harvard Model United Nations",
       "description": "Premier international Model UN conference. Best delegate awards demonstrate exceptional public speaking, negotiation, and international relations knowledge.",
       "difficulty": "High",
-      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWkk_RAsNsM3UJ8LEeMX9wAiMN-wKxpqgwBA&s",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWkk_RAsNsM3UJ8LEeMX9wAiMN-wKxpqgwBA&s",
       "interests": ["International Relations", "Politics", "Public Speaking", "Debate"],
       "tags": ["Model UN", "International", "Harvard", "Debate"],
       "timeCommitment": "1-2 years preparation, weekend conference"
@@ -619,7 +619,7 @@
       "name": "Environmental Challenge from National Geographic",
       "description": "Students develop solutions to environmental problems. Winners receive mentorship from National Geographic explorers and significant media coverage.",
       "difficulty": "High",
-      "imageURL": "https://example.com/natgeo-challenge.jpg",
+      "image": "https://example.com/natgeo-challenge.jpg",
       "interests": ["Environmental Science", "Conservation", "Geography", "Sustainability"],
       "tags": ["Environment", "National Geographic", "Challenge", "Sustainability"],
       "timeCommitment": "4-6 months to develop project"
@@ -629,7 +629,7 @@
       "name": "Health Occupations Students of America (HOSA)",
       "description": "National competition in health sciences. Winners demonstrate readiness for medical careers and often receive recognition from medical schools.",
       "difficulty": "Moderate to High",
-      "imageURL": "https://www.ctsos.org/wp-content/uploads/2013/04/HOSA-Rebrand-Logo-Standard-med-res.jpg",
+      "image": "https://www.ctsos.org/wp-content/uploads/2013/04/HOSA-Rebrand-Logo-Standard-med-res.jpg",
       "interests": ["Medicine", "Health Sciences", "Biology", "Nursing"],
       "tags": ["Medical", "Health", "Competition", "Career Preparation"],
       "timeCommitment": "1-2 years, 4-6 hours per week"
@@ -639,7 +639,7 @@
       "name": "Presidential Volunteer Service Award",
       "description": "Federal recognition for outstanding community service. Gold level (250+ hours) demonstrates sustained commitment to service and leadership.",
       "difficulty": "Moderate",
-      "imageURL": "https://firstintexas.org/wp-content/uploads/2023/07/FIRST-in-Texas-Volunteer-Service-Award.jpeg",
+      "image": "https://firstintexas.org/wp-content/uploads/2023/07/FIRST-in-Texas-Volunteer-Service-Award.jpeg",
       "interests": ["Community Service", "Volunteering", "Social Impact"],
       "tags": ["Service", "Presidential", "Award", "Community"],
       "timeCommitment": "1-2 years, 250+ hours of service"
@@ -649,7 +649,7 @@
       "name": "National History Day Competition",
       "description": "National competition requiring deep historical research and presentation skills. Winners demonstrate advanced analytical and research abilities.",
       "difficulty": "High",
-      "imageURL": "https://example.com/nhd-logo.jpg",
+      "image": "https://example.com/nhd-logo.jpg",
       "interests": ["History", "Research", "Social Studies", "Writing"],
       "tags": ["History", "Research", "Competition", "Academic"],
       "timeCommitment": "8-12 months for research and preparation"
@@ -659,7 +659,7 @@
       "name": "National Spanish Examinations",
       "description": "National language proficiency competition. Gold medal winners demonstrate exceptional language skills valued by international programs.",
       "difficulty": "Moderate to High",
-      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToA6o6sMOKfkfzOxENzNvYUQzc8VmgOtiuCQ&s",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToA6o6sMOKfkfzOxENzNvYUQzc8VmgOtiuCQ&s",
       "interests": ["Spanish Language", "Culture", "International Studies"],
       "tags": ["Language", "Spanish", "Competition", "Cultural"],
       "timeCommitment": "2-3 years of language study"
@@ -669,7 +669,7 @@
       "name": "Invention Convention Worldwide",
       "description": "Global invention competition encouraging innovation and entrepreneurship. Winners often receive patent support and recognition from engineering schools.",
       "difficulty": "High",
-      "imageURL": "https://yt3.googleusercontent.com/iQvZqsGg0ERTRPh9JL0IPRST0LYgZpFltatcnhWNpN26NUlMWTsPRmSjuduEuBpvnMlQDGFV=s900-c-k-c0x00ffffff-no-rj",
+      "image": "https://yt3.googleusercontent.com/iQvZqsGg0ERTRPh9JL0IPRST0LYgZpFltatcnhWNpN26NUlMWTsPRmSjuduEuBpvnMlQDGFV=s900-c-k-c0x00ffffff-no-rj",
       "interests": ["Engineering", "Innovation", "Entrepreneurship", "Problem Solving"],
       "tags": ["Invention", "Innovation", "Engineering", "Global"],
       "timeCommitment": "6-12 months to develop invention"
@@ -679,7 +679,7 @@
       "name": "Tournament of Champions (TOC) Debate",
       "description": "Premier high school debate tournament. Qualification demonstrates elite-level argumentation and public speaking skills highly valued by top universities.",
       "difficulty": "Extremely High",
-      "imageURL": "https://images.squarespace-cdn.com/content/v1/62da6277734459708683c964/8e723d9c-2d23-4aff-9abc-ebe5508bbb61/TOC+LOGO+FINAL+REAL.jpeg",
+      "image": "https://images.squarespace-cdn.com/content/v1/62da6277734459708683c964/8e723d9c-2d23-4aff-9abc-ebe5508bbb61/TOC+LOGO+FINAL+REAL.jpeg",
       "interests": ["Debate", "Public Speaking", "Critical Thinking", "Law"],
       "tags": ["Debate", "Tournament", "Elite", "Public Speaking"],
       "timeCommitment": "3-4 years, 15-20 hours per week"
@@ -689,7 +689,7 @@
       "name": "Google Science Fair",
       "description": "Global online science competition for students. Winners receive mentorship from Google scientists and significant scholarship opportunities.",
       "difficulty": "Very High",
-      "imageURL": "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/Launch_2880x1200_1440x720.gif",
+      "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/Launch_2880x1200_1440x720.gif",
       "interests": ["Science", "Technology", "Research", "Innovation"],
       "tags": ["Google", "Science", "Global", "Technology"],
       "timeCommitment": "6-12 months for research project"
@@ -699,7 +699,7 @@
       "name": "Start and Lead a School Publication",
       "description": "Creating and leading a school newspaper, magazine, or digital publication demonstrates leadership, writing skills, and media literacy.",
       "difficulty": "Moderate to High",
-      "imageURL": "https://blog.pressreader.com/hubfs/media-literacy-concept.jpg",
+      "image": "https://blog.pressreader.com/hubfs/media-literacy-concept.jpg",
       "interests": ["Journalism", "Writing", "Media", "Leadership"],
       "tags": ["Publishing", "Leadership", "Media", "Writing"],
       "timeCommitment": "2-3 years, 8-12 hours per week"
@@ -709,7 +709,7 @@
       "name": "Congressional Youth Cabinet",
       "description": "Selective program where students work directly with members of Congress on policy issues. Provides unique government experience and networking.",
       "difficulty": "Very High",
-      "imageURL": "https://mhobserver.com/wp-content/uploads/2025/04/boozman-kids.jpg",
+      "image": "https://mhobserver.com/wp-content/uploads/2025/04/boozman-kids.jpg",
       "interests": ["Government", "Policy", "Politics", "Public Service"],
       "tags": ["Government", "Congress", "Policy", "Youth"],
       "timeCommitment": "1-year program, 10-15 hours per week"
@@ -719,10 +719,10 @@
       "name": "Create STEM Education Program",
       "description": "Developing and implementing STEM education programs for younger students demonstrates teaching ability, subject mastery, and commitment to education.",
       "difficulty": "Moderate to High",
-      "imageURL": "https://ieeephotonics.org/wp-content/uploads/2023/10/shutterstock_411033046-1024x683.jpg",
+      "image": "https://ieeephotonics.org/wp-content/uploads/2023/10/shutterstock_411033046-1024x683.jpg",
       "interests": ["STEM", "Education", "Teaching", "Community Service"],
       "tags": ["STEM", "Education", "Teaching", "Outreach"],
       "timeCommitment": "1-2 years, 5-8 hours per week"
-    }
+    },
     ]
 
