@@ -44,173 +44,360 @@
             font-size: 14px;
             margin-bottom: 8px;
         }
-        .modal {
+        
+        /* Mini-page styles */
+        .mini-page {
             display: none;
             position: fixed;
-            z-index: 10;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.6);
+            background: #f5f5f5;
+            z-index: 1000;
+            overflow-y: auto;
         }
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
+        
+        .mini-page.active {
+            display: block;
+        }
+        
+        .mini-page-content {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #720000;
+            color: white;
+            border: none;
             border-radius: 12px;
-            width: 90%;
-            max-width: 600px;
-            color: #333;
-        }
-        .close-button {
-            float: right;
-            font-size: 24px;
             cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 30px;
+            transition: background 0.2s;
         }
-        #modalImage {
+        
+        .back-button:hover {
+            background: #9a0000;
+        }
+        
+        .back-arrow {
+            font-size: 18px;
+        }
+        
+        .mini-page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .mini-page-title {
+            font-size: 2.5em;
+            color: #720000;
+            margin-bottom: 20px;
+        }
+        
+        .mini-page-image {
             width: 100%;
+            max-width: 600px;
+            border-radius: 16px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .mini-page-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin: 30px 0;
+        }
+        
+        .mini-page-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tag {
+            background: #720000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .mini-page-commitment {
+            background: #f0f0f0;
+            padding: 20px;
             border-radius: 12px;
             margin: 20px 0;
         }
+        
+        .commitment-label {
+            font-weight: bold;
+            color: #720000;
+            margin-bottom: 10px;
+        }
+        
+        /* Smooth transitions */
+        .main-content {
+            transition: opacity 0.3s ease;
+        }
+        
+        .main-content.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #720000;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #720000;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
     <script defer>
+        let currentData = [];
+        
         async function fetchData() {
             const response = await fetch('highschool_activities.json');
             const data = await response.json();
+            currentData = data;
             renderCards(data);
 
             const input = document.getElementById('searchInput');
-           input.addEventListener('input', () => {
-    const searchTerm = input.value.toLowerCase();
-    const filtered = data.filter(item =>
-        item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-    );
-    renderCards(filtered);
-});
-
+            input.addEventListener('input', () => {
+                const searchTerm = input.value.toLowerCase();
+                const filtered = data.filter(item =>
+                    item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+                renderCards(filtered);
+            });
         }
 
         function renderCards(activities) {
             const container = document.getElementById('opportunitiesContainer');
             container.innerHTML = '';
-            activities.forEach(activity => {
+            activities.forEach((activity, index) => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
                     <h3>${activity.name}</h3>
-<div class="tags"><strong>Tags:</strong> ${activity.tags.join(', ')}</div>
+                    <div class="tags"><strong>Tags:</strong> ${activity.tags.join(', ')}</div>
                     <div class="commitment"><strong>Commitment:</strong> ${activity.timeCommitment}</div>
                 `;
-                card.addEventListener('click', () => openModal(activity));
+                card.addEventListener('click', () => openMiniPage(activity, index));
                 container.appendChild(card);
             });
         }
 
-        function openModal(activity) {
-            document.getElementById('modalTitle').textContent = activity.name;
-            document.getElementById('modalImage').src = activity.image;
-            document.getElementById('modalDescription').textContent = activity.description;
-            document.getElementById('modal').style.display = 'block';
+        function openMiniPage(activity, index) {
+            // Update URL to simulate new page (increases page views)
+            const newUrl = `${window.location.pathname}?opportunity=${encodeURIComponent(activity.name.toLowerCase().replace(/\s+/g, '-'))}&id=${index}`;
+            history.pushState({ 
+                page: 'opportunity', 
+                activity: activity, 
+                index: index 
+            }, activity.name, newUrl);
+            
+            // Show loading first
+            showLoading();
+            
+            // Simulate loading time for realistic page transition
+            setTimeout(() => {
+                showMiniPage(activity);
+            }, 300);
         }
+        
+        function showLoading() {
+            const mainContent = document.querySelector('.main-content');
+            mainContent.classList.add('hidden');
+            
+            const miniPage = document.getElementById('miniPage');
+            const miniPageContent = document.querySelector('.mini-page-content');
+            
+            miniPageContent.innerHTML = '<div class="loading">Loading opportunity...</div>';
+            miniPage.classList.add('active');
+        }
+
+        function showMiniPage(activity) {
+            const miniPageContent = document.querySelector('.mini-page-content');
+            
+            miniPageContent.innerHTML = `
+                <button class="back-button" onclick="closeMiniPage()">
+                    <span class="back-arrow">←</span>
+                    Back to Opportunities
+                </button>
+                
+                <div class="mini-page-header">
+                    <h1 class="mini-page-title">${activity.name}</h1>
+                </div>
+                
+                <img class="mini-page-image" src="${activity.image}" alt="${activity.name}" />
+                
+                <div class="mini-page-tags">
+                    ${activity.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                
+                <div class="mini-page-commitment">
+                    <div class="commitment-label">Time Commitment:</div>
+                    <div>${activity.timeCommitment}</div>
+                </div>
+                
+                <div class="mini-page-description">
+                    ${activity.description}
+                </div>
+            `;
+            
+            // Update page title
+            document.title = `${activity.name} - Opportunities`;
+        }
+
+        function closeMiniPage() {
+            const miniPage = document.getElementById('miniPage');
+            const mainContent = document.querySelector('.main-content');
+            
+            miniPage.classList.remove('active');
+            mainContent.classList.remove('hidden');
+            
+            // Restore original URL and title
+            history.pushState(null, 'Opportunities', window.location.pathname);
+            document.title = 'Opportunities';
+        }
+        
+        // Handle browser back button
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.page === 'opportunity') {
+                showMiniPage(event.state.activity);
+            } else {
+                closeMiniPage();
+            }
+        });
+        
+        // Handle direct URL access (if someone shares the link)
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const opportunityId = urlParams.get('id');
+            
+            if (opportunityId && currentData.length > 0) {
+                const activity = currentData[parseInt(opportunityId)];
+                if (activity) {
+                    openMiniPage(activity, parseInt(opportunityId));
+                }
+            }
+        });
 
         window.onload = () => {
             fetchData();
-
-            document.querySelector('.close-button').addEventListener('click', () => {
-                document.getElementById('modal').style.display = 'none';
-            });
-
-            window.addEventListener('click', e => {
-                if (e.target === document.getElementById('modal')) {
-                    document.getElementById('modal').style.display = 'none';
-                }
-            });
         }
     </script>
 </head>
 <body>
-  <div class="navbar">
-        <div class="left">
-            <div class="logo">
-                <img src="assets/images/icon.avif">
+    <div class="main-content">
+        <div class="navbar">
+            <div class="left">
+                <div class="logo">
+                    <img src="assets/images/icon.avif">
+                </div>
+                <div class="nav-links">
+                    <a class="nav-item" href="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-house">
+                            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                            <path
+                                d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        </svg>
+                        Home
+                    </a>
+                    <a class="nav-item" href="mentors.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-file-user">
+                            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                            <path d="M15 18a3 3 0 1 0-6 0" />
+                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
+                            <circle cx="12" cy="13" r="2" />
+                        </svg>
+                        Mentors
+                    </a>
+                    <a class="nav-item" href="opportunities.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-link">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg>
+                        Opportunities
+                    </a>
+                    <a class="nav-item">
+                        <svg xmlns="http://www.w3.2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-book">
+                            <path
+                                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+                        </svg>
+                        Guides
+                    </a>
+                </div>
             </div>
-            <div class="nav-links">
-                <a class="nav-item" href="index.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-house">
-                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                        <path
-                            d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    </svg>
-                    Home
-                </a>
-                <a class="nav-item" href="mentors.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-file-user">
-                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                        <path d="M15 18a3 3 0 1 0-6 0" />
-                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
-                        <circle cx="12" cy="13" r="2" />
-                    </svg>
-                    Mentors
-                </a>
-                <a class="nav-item" href="opportunities.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-link">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                    </svg>
-                    Opportunities
-                </a>
+            <div class="right">
                 <a class="nav-item">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-book">
-                        <path
-                            d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+                        class="lucide lucide-instagram">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                     </svg>
-                    Guides
                 </a>
             </div>
         </div>
-        <div class="right">
-            <a class="nav-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-instagram">
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-            </a>
-        </div>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="text-section">
+                    <h1>Explore Opportunities</h1>
+                    <p class="subtitle">Search by interest, commitment, or tag</p>
+                    <input type="text" id="searchInput" placeholder="Search by tag (e.g., STEM, Arts)..." />
+                </div>
+            </div>
+        </section>
+
+        <section class="opportunities-container" id="opportunitiesContainer">
+            <!-- Cards injected by JavaScript -->
+        </section>
     </div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="text-section">
-                <h1>Explore Opportunities</h1>
-                <p class="subtitle">Search by interest, commitment, or tag</p>
-                <input type="text" id="searchInput" placeholder="Search by tag (e.g., STEM, Arts)..." />
-            </div>
-        </div>
-    </section>
-
-    <section class="opportunities-container" id="opportunitiesContainer">
-        <!-- Cards injected by JavaScript -->
-    </section>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <img id="modalImage" alt="Opportunity Image" />
-            <p id="modalDescription"></p>
+    <!-- Mini-page overlay -->
+    <div id="miniPage" class="mini-page">
+        <div class="mini-page-content">
+            <!-- Content injected by JavaScript -->
         </div>
     </div>
 </body>
