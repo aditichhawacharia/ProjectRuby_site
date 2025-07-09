@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Opportunities</title>
-            <script defer src="https://cloud.umami.is/script.js" data-website-id="1e47dea7-560e-497a-b096-12a8721942ab"></script>
     <link rel="stylesheet" href="assets/css/index.css" />
     <style>
         #searchInput {
@@ -377,6 +376,33 @@
             miniPage.classList.add('active');
         }
 
+        function validateAndCleanImageUrl(url) {
+            if (!url || typeof url !== 'string') return null;
+            
+            // Clean up common URL encoding issues
+            let cleanUrl = url.trim();
+            
+            // Handle double-encoded URLs
+            try {
+                // Try to decode if it's already encoded
+                if (cleanUrl.includes('%')) {
+                    cleanUrl = decodeURIComponent(cleanUrl);
+                }
+            } catch (e) {
+                // If decoding fails, use original URL
+                cleanUrl = url;
+            }
+            
+            // Check if it's a valid URL
+            try {
+                new URL(cleanUrl);
+                return cleanUrl;
+            } catch (e) {
+                console.warn('Invalid image URL:', url);
+                return null;
+            }
+        }
+
         function showMiniPage(activity) {
             const mainContent = document.querySelector('.main-content');
             mainContent.classList.add('hidden');
@@ -389,8 +415,11 @@
                 `<span class="difficulty-dot ${i < (activity.difficulty || 1) ? 'filled' : ''}"></span>`
             ).join('');
             
+            // Validate and clean the image URL
+            const cleanImageUrl = validateAndCleanImageUrl(activity.image);
+            
             // Create image element with proper error handling
-            const imageElement = activity.image ? 
+            const imageElement = cleanImageUrl ? 
                 `<div class="mini-page-image loading" id="activityImage">Loading image...</div>` : 
                 `<div class="mini-page-image error">
                     <div>📷</div>
@@ -444,13 +473,16 @@
                 </div>
             `;
             
-            // Handle image loading if image exists
-            if (activity.image) {
+            // Handle image loading if clean image URL exists
+            if (cleanImageUrl) {
                 const imageContainer = document.getElementById('activityImage');
                 const img = new Image();
                 
+                // Add CORS support for external images
+                img.crossOrigin = 'anonymous';
+                
                 img.onload = function() {
-                    imageContainer.style.backgroundImage = `url(${activity.image})`;
+                    imageContainer.style.backgroundImage = `url("${cleanImageUrl}")`;
                     imageContainer.style.backgroundSize = 'cover';
                     imageContainer.style.backgroundPosition = 'center';
                     imageContainer.classList.remove('loading');
@@ -458,22 +490,31 @@
                 };
                 
                 img.onerror = function() {
+                    console.warn('Failed to load image:', cleanImageUrl);
                     imageContainer.classList.remove('loading');
                     imageContainer.classList.add('error');
                     imageContainer.innerHTML = `
                         <div>📷</div>
                         <div>Image failed to load</div>
+                        <div style="font-size: 12px; opacity: 0.7;">URL: ${cleanImageUrl.substring(0, 50)}...</div>
                     `;
                 };
                 
                 // Set a timeout to prevent indefinite loading
                 setTimeout(() => {
                     if (imageContainer.classList.contains('loading')) {
+                        console.warn('Image loading timeout:', cleanImageUrl);
                         img.onerror();
                     }
                 }, 5000); // 5 second timeout
                 
-                img.src = activity.image;
+                // Try loading the image
+                try {
+                    img.src = cleanImageUrl;
+                } catch (e) {
+                    console.error('Error setting image src:', e);
+                    img.onerror();
+                }
             }
             
             miniPage.classList.add('active');
