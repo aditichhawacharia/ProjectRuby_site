@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project Ruby - Mentors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+                url("https://t3.ftcdn.net/jpg/06/00/92/48/360_F_600924810_sUjRctiOgobpzgaHnv3dPDhyoT25F3xb.jpg");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            color: #f5f5f5;
+        }
+
+        .navbar {
+            width: 95%;
+            margin: 20px auto 0px auto;
+            background: linear-gradient(120deg, #ffe0e6 0%, #fdcad3 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: -20px;
+            height: 40px;
+            border-radius: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 14px;
+            color: #10141a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(236, 72, 153, 0.1));
+            color: #be185d;
+            transform: translateY(-2px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(236, 72, 153, 0.2));
+            color: #be185d;
+        }
+
+        .nav-item svg {
+            width: 18px;
+            height: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover svg {
+            transform: scale(1.1);
+            color: #be185d;
+        }
+
+        .right .nav-item {
+            padding: 0.5rem;
+        }
+
+        .mentors-container {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .mentor-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .mentor-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 12px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .mentor-info {
+            flex: 1;
+        }
+
+        .mentor-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8B0000;
+            margin-bottom: 0.5rem;
+        }
+
+        .mentor-title {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .mentor-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .mentors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mentor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mentor-image {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="left">
+            <div class="logo">
+                <img src="assets/images/icon.avif" alt="Project Ruby Logo">
+            </div>
+            <div class="nav-links">
+                <a class="nav-item" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-house">
+                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                        <path
+                            d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    </svg>
+                    Home
+                </a>
+                <a class="nav-item active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-file-user">
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                        <path d="M15 18a3 3 0 1 0-6 0" />
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
+                        <circle cx="12" cy="13" r="2" />
+                    </svg>
+                    Mentors
+                </a>
+                <a class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-link">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    Opportunities
+                </a>
+                <a class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-book">
+                        <path
+                            d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+                    </svg>
+                    Guides
+                </a>
+            </div>
+        </div>
+        <div class="right">
+            <a class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-instagram">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="mentors-container">
+        <h1 class="page-title" style="font-family: ;">Meet Our Mentors</h1>
+        
+       <div class="mentors-grid">
+        <!-- 1 -->
+<div class="mentor-card">
+    <img src="assets/images/aditi.avif" alt="Aditi Chhawacharia" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Aditi Chhawacharia</h3>
+        <p class="mentor-title">Founder of Project Ruby</p>
+        <p class="mentor-description">Aditi is extremely well‑versed in tech and building initiatives: she’s created apps and websites, conducted research with labs and fellowships, and founded both this mentorship program and a tech nonprofit. She also leads her school’s Girls Who Code chapter and commands a broad tech stack —from Python and full‑stack web to AI, React Native, Flutter/Dart, and AI governance.</p>
+    </div>
+</div>
+
+<!-- 2 -->
+<div class="mentor-card">
+    <img src="assets/images/riyadutta.avif" alt="Riya Dutta" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Riya Dutta</h3>
+        <p class="mentor-title">Youth leader, policy advocate, nonprofit founder</p>
+        <p class="mentor-description">Co‑author of an AI policy paper headed to the UN General Assembly, Riya has distributed 3,000+ school supplies, launched 10+ donation sites, interned in Congress, and engaged 20+ UN delegations. A nationally ranked debater and Policy Fellow, she brings 120 hours of service and deep public‑policy insight.</p>
+
+</p>
+    </div>
+</div>
+
+<!-- 3 -->
+<div class="mentor-card">
+    <img src="assets/images/kimberlyhuynh.avif" alt="Kimberly Huynh" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Kimberly Huynh</h3>
+        <p class="mentor-title">Founder of MEDIMIX</p>
+        <p class="mentor-description">
+            Kimberly juggles passion‑project research, an after‑school STEM program she founded, and hospital volunteering across nursing, pharmacy, and the ER—all while playing two varsity sports and taking dual‑enrollment/AP classes. Ask her about launching projects in bio & medicine.</p>
+    </div>
+</div>
+
+<!-- 4 -->
+<div class="mentor-card">
+    <img src="assets/images/gargichaudari.avif" alt="Gargi Chaudari" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Gargi Chaudari</h3>
+        <p class="mentor-title">Finance‑focused student leader</p>
+        <p class="mentor-description">With finance internships, published research, an ICDC qualification, and leadership over a fund that’s raised $125 K+ for schools in India, Gargi is a go‑to for investing, DECA finance events, and competitive business strategy.</p>
+    </div>
+</div>
+
+<!-- 5 -->
+<div class="mentor-card">
+    <img src="assets/images/sophialee.avif" alt="Sophia Lee" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Sophia Lee</h3>
+        <p class="mentor-title">Author & Literary‑Magazine Founder</p>
+        <p class="mentor-description">Founder of international Asian‑literacy magazines in 5 countries, blogger with 1.4 M views, and author of a Pushcart‑ and Emily Dickinson‑nominated poetry collection—perfect for publishing, competitions, or literary nonprofits.</p>
+    </div>
+</div>
+
+<!-- 6 -->
+<div class="mentor-card">
+    <img src="assets/images/shravyareddivari.avif" alt="Shravya Reddivari" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Shravya Reddivari</h3>
+        <p class="mentor-title">Education‑reform advocate & nonprofit VP</p>
+        <p class="mentor-description">Published bills in education reform, VP of a nonprofit serving under‑resourced groups, developer of a district‑support website, and award‑winning business competitor—ideal for policy, law, or city‑level initiatives.</p>
+    </div>
+</div>
+
+<!-- 7 -->
+<div class="mentor-card">
+    <img src="assets/images/shreyatalwar.avif" alt="Shreya Talwar" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Shreya Talwar</h3>
+        <p class="mentor-title">Entrepreneur & Martial‑Arts Instructor</p>
+        <p class="mentor-description">CEO of So Sweet Dessert Emporium, co‑founder of Simply Gifted Shop, French Honor Society president, and certified martial‑arts instructor—ready to mentor on entrepreneurship, teamwork, and leadership.</p>
+    </div>
+</div>
+
+<!-- 8 -->
+<div class="mentor-card">
+    <img src="assets/images/destinysaintamour.avif" alt="Destiny Saint Amour" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Destiny Saint Amour</h3>
+        <p class="mentor-title">Digital‑marketing entrepreneur & youth leader</p>
+        <p class="mentor-description">Runs a branding/social‑media firm supporting small businesses and founded a law‑focused newsletter for youth. VP of Student Government, DECA chapter founder, and cancer‑initiative media director.</p>
+    </div>
+</div>
+
+<!-- 9 -->
+<div class="mentor-card">
+    <img src="assets/images/munayassin.avif" alt="Muna Yassin" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Muna Yassin</h3>
+        <p class="mentor-title">Startup Founder & Neuroscience Researcher</p>
+        <p class="mentor-description">Owner of an Etsy shop with 5 K+ sales, gene‑therapy researcher, medical nonprofit founder, science‑fair champion, city economic‑council chair, and Math/Science Olympiad winner.</p>
+    </div>
+</div>
+
+<!-- 10 -->
+<div class="mentor-card">
+    <img src="assets/images/nityaajjampudi.avif" alt="Nitya Ajjampudi" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Nitya Ajjampudi</h3>
+        <p class="mentor-title">Women’s‑Health Nonprofit Founder</p>
+        <p class="mentor-description">Donated 2 K+ feminine‑hygiene products, built global support groups & podcast, president of a Judicial Society and a finance‑literacy nonprofit, and Top‑20 DECA ICDC finalist.</p>
+    </div>
+</div>
+
+<!-- 11 -->
+<div class="mentor-card">
+    <img src="assets/images/jaidenli.avif" alt="Jaiden Li" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Jaiden Li</h3>
+        <p class="mentor-title">STEM Researcher & Policy Advocate</p>
+        <p class="mentor-description">Published research, conference presenter, AI/cyberbullying‑policy innovator, Olympiad & hackathon winner, US Presidential Scholarship nominee, top Physics experimental‑proposal winner.</p>
+    </div>
+</div>
+
+<!-- 12 -->
+<div class="mentor-card">
+    <img src="assets/images/vaishnavitatineni.avif" alt="Vaishnavi Tatineni" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Vaishnavi Tatineni</h3>
+        <p class="mentor-title">Healthcare Nonprofit Co‑Founder</p>
+        <p class="mentor-description">Led donation of 1 K+ hygiene kits, built 20 US & 5 global chapters, trained 200 students in first aid, organized a film festival on domestic violence, and logged 3 K+ service hours.</p>
+    </div>
+</div>
+
+<!-- 13 -->
+<div class="mentor-card">
+    <img src="assets/images/ashleydequito.avif" alt="Ashley Dequito" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Ashley Dequito</h3>
+        <p class="mentor-title">Youth STEM Initiative Co‑Founder</p>
+        <p class="mentor-description">Co‑founded a nonprofit bringing comp‑sci workshops to low‑income families via local libraries; excels at project ideation and execution for STEM outreach.</p>
+    </div>
+</div>
+
+<!-- 14 -->
+<div class="mentor-card">
+    <img src="assets/images/sahasraillandula.avif" alt="Sahasra Illandula" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Sahasra Illandula</h3>
+        <p class="mentor-title">Finance & Wellness‑Equity Leader</p>
+        <p class="mentor-description">Multiple finance internships, fintech passion project, president of a 200‑member wellness club, marketing‑campaign designer for a major nonprofit, and leading STEM‑education tech intern.</p>
+    </div>
+</div>
+
+<!-- 15 -->
+<div class="mentor-card">
+    <img src="assets/images/nithyagaratapaty.avif" alt="Nithya Garapaty" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Nithya Garapaty</h3>
+        <p class="mentor-title">Speech‑and‑Debate Champion & Nonprofit Founder</p>
+        <p class="mentor-description">National‑qualifier extemp captain, founder of a speech/debate nonprofit for youth, Frisco City MVP volunteer, and storytelling‑workshop developer.</p>
+    </div>
+</div>
+
+<!-- 16 -->
+<div class="mentor-card">
+    <img src="assets/images/shanvimohan.avif" alt="Shanvi Mohan" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Shanvi Mohan</h3>
+        <p class="mentor-title">Healthcare Innovator & DECA ICDC Qualifier</p>
+        <p class="mentor-description">Co‑founded a nonprofit expanding extracurriculars, developing a water‑filtration system, legal‑org intern on student mental health, shadowed a doctor, taught students in Ukraine, and DECA ICDC qualifier.</p>
+    </div>
+</div>
+
+<!-- 17 -->
+<div class="mentor-card">
+    <img src="assets/images/ayushimishra.avif" alt="Ayushi Mishra" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Ayushi Mishra</h3>
+        <p class="mentor-title">Neuroscience Nonprofit CEO & Researcher</p>
+        <p class="mentor-description">CEO of a neuro‑centered nonprofit, independent dream‑science researcher, fundraiser ($4 K+), club founder for community‑impact research, and Model UN expansion leader.</p>
+    </div>
+</div>
+
+<!-- 18 -->
+<div class="mentor-card">
+    <img src="assets/images/jayabondada.avif" alt="Jaya Bondada" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Jaya Bondada</h3>
+        <p class="mentor-title">Neuroscience & Psychology Changemaker</p>
+        <p class="mentor-description">Co‑founded Hope for Neuro, launched a research‑connect club publishing student papers, organizing pro‑led workshops, and pursuing her own psychology research.</p>
+    </div>
+</div>
+
+<!-- 19 -->
+<div class="mentor-card">
+    <img src="assets/images/ayanatyagi.avif" alt="Ayana Tyagi" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Ayana Tyagi</h3>
+        <p class="mentor-title">Entrepreneur & Author</p>
+        <p class="mentor-description">Founder of a karaoke‑events LLC ($1.2 K+ revenue), author of a children’s book and upcoming finance guide, experienced in finance, marketing, and entrepreneurship.</p>
+    </div>
+</div>
+
+<!-- 20 -->
+<div class="mentor-card">
+    <img src="assets/images/spurthipalle.avif" alt="Spurthi Palle" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Spurthi Palle</h3>
+        <p class="mentor-title">Community‑Service Nonprofit Founder</p>
+        <p class="mentor-description">Founder of a clothing‑donation nonprofit serving shelters, veterans, and low‑income families; blog creator for volunteer opportunities; board member at Cards of Compassion; certified in immigration law.</p>
+    </div>
+</div>
+
+<!-- 21 -->
+<div class="mentor-card">
+    <img src="assets/images/chelseaozen.avif" alt="Chelsea Ozen" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Chelsea Ozen</h3>
+        <p class="mentor-title">Young Author & Humanities Mentor</p>
+        <p class="mentor-description">Author of one book and drafting two more; offers guidance on writing, outlining, formatting, AP World, and navigating high‑school humanities.</p>
+    </div>
+</div>
+
+<!-- 22 -->
+<div class="mentor-card">
+    <img src="assets/images/camerynlee.avif" alt="Cameryn Lee" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Cameryn Lee</h3>
+        <p class="mentor-title">Passion‑Project Builder & Podcaster</p>
+        <p class="mentor-description">Creator of a true‑crime podcast, neurology‑center shadowing, psychology‑center volunteering, and speech/debate initiatives—great for brainstorming new extracurriculars.</p>
+    </div>
+</div>
+
+<!-- 23 -->
+<div class="mentor-card">
+    <img src="assets/images/lindseyblanco.avif" alt="Lindsey Blanco" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Lindsey Blanco</h3>
+        <p class="mentor-title">Poet & Community Advocate</p>
+        <p class="mentor-description">Research‑paper writer, poet with 24 K+ reads, DECA collaborator on teen‑abuse awareness, and 200+ service‑hour volunteer ready to help launch impact projects.</p>
+    </div>
+</div>
+
+<!-- 24 -->
+<div class="mentor-card">
+    <img src="assets/images/trishasheth.avif" alt="Trisha Sheth" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Trisha Sheth</h3>
+        <p class="mentor-title">Medical Nonprofit Founder & CNA</p>
+        <p class="mentor-description">Founded a 501(c)(3) medical nonprofit, certified nursing assistant, physician‑clinic intern, pediatric‑dentist assistant, and mentor in building medical‑field extracurriculars.</p>
+    </div>
+</div>
+
+<!-- 25 -->
+<div class="mentor-card">
+    <img src="assets/images/ebihonmioshe.avif" alt="Ebihonmi Oshe" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Ebihonmi Oshe</h3>
+        <p class="mentor-title">Business & Marketing Intern</p>
+        <p class="mentor-description">State Farm marketing intern, UC‑Berkeley NSLC business scholar (1st‑place simulator winner), editorial board member launching economic‑policy coverage at National Youth Press.</p>
+    </div>
+</div>
+
+<!-- 26 -->
+<div class="mentor-card">
+    <img src="assets/images/chloeryan.avif" alt="Chloe Ryan" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Chloe Ryan</h3>
+        <p class="mentor-title">Neuroscience Researcher & STEM Club Founder</p>
+        <p class="mentor-description">University lab intern, founder/president of HOSA chapter, nonprofit chapter leader teaching neuroscience to elementary students, and STEM podcaster.</p>
+    </div>
+</div>
+
+<!-- 27 -->
+<div class="mentor-card">
+    <img src="assets/images/riyadabholkar.avif" alt="Riya Dabholkar" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Riya Dabholkar</h3>
+        <p class="mentor-title">Nonprofit Founder & Content Creator</p>
+        <p class="mentor-description">Origami‑club president (500+ pieces donated), nonprofit founder for special‑needs programs, 5th‑grade STEM mentor, LLM‑company data‑analysis intern, YouTuber (0.5 M views), and resale‑business owner.</p>
+    </div>
+</div>
+
+<!-- 28 -->
+<div class="mentor-card">
+    <img src="assets/images/pragnasripyidimarri.avif" alt="Pragnasri Pyidimarri" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Pragnasri Pyidimarri</h3>
+        <p class="mentor-title">Entrepreneur & Finance Competitor</p>
+        <p class="mentor-description">Student‑startup co‑founder (state‑finalist prototype), nonprofit tutor/manager raising $40 K+, Girl Scout Silver awardee, BPA financial‑analyst national alternate, PVSA Gold honoree.</p>
+    </div>
+</div>
+
+<!-- 29 -->
+<div class="mentor-card">
+    <img src="assets/images/manaskritisista.avif" alt="Manaskriti Sista" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Manaskriti Sista</h3>
+        <p class="mentor-title">Entrepreneur & Marketing Intern</p>
+        <p class="mentor-description">Founded two businesses, wellness‑clinic intern, esports‑org intern, AI‑recruitment research assistant, DECA state/international qualifier, BPA finalist, two‑time PVSA Gold recipient.</p>
+    </div>
+</div>
+
+<!-- 30 -->
+<div class="mentor-card">
+    <img src="assets/images/saanvilalam.avif" alt="Saanvi Lalam" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Saanvi Lalam</h3>
+        <p class="mentor-title">Mental‑Health Nonprofit Co‑Founder</p>
+        <p class="mentor-description">Runs affordable mental‑health‑resource nonprofit, Young Adult Representative delivering parent/school presentations, Bank of America & State Farm intern, finance‑consulting intern, organizer of bookmark & fundraiser events.</p>
+    </div>
+</div>
+
+<!-- 31 -->
+<div class="mentor-card">
+    <img src="assets/images/saanvichiliveru.avif" alt="Saanvi Chiliveru" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Saanvi Chiliveru</h3>
+        <p class="mentor-title">Climate‑Justice Youth Leader</p>
+        <p class="mentor-description">Co‑CEO of Shade Seekers reaching 8 K+ youth, DoSomething BINfluencer, Digital4Good Changemaker, CHSA president (public‑speaking program), TEDx organizer, Texas DECA social‑media advocate (10 K+ views).</p>
+    </div>
+</div>
+
+<!-- 32 -->
+<div class="mentor-card">
+    <img src="assets/images/shadrisayad.avif" alt="Shadri Sayad" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Shadri Sayad</h3>
+        <p class="mentor-title">Gender‑Equity Advocate & Policy Researcher</p>
+        <p class="mentor-description">Founder of @HER platform, Harvard ALP ’25 cohort member, e‑book author on gender equity, policy‑research fellow, team member at 21st Century Us (Nigeria), volunteer with Women in Business CDL.</p>
+    </div>
+</div>
+
+<!-- 33 -->
+<div class="mentor-card">
+    <img src="assets/images/rishachaurasia.avif" alt="Risha Chaurasia" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Risha Chaurasia</h3>
+        <p class="mentor-title">Teen Author & Youth‑Community Founder</p>
+        <p class="mentor-description">Published first novel at 11 and second at 13, founder of YouthCore platform amplifying Gen Z voices, Gold award winner in the Queen’s Commonwealth Essay Competition.</p>
+    </div>
+</div>
+
+<!-- 34 -->
+<div class="mentor-card">
+    <img src="assets/images/mehjabin.avif" alt="Mehjabin" class="mentor-image">
+    <div class="mentor-info">
+        <h3 class="mentor-name">Mehjabin</h3>
+        <p class="mentor-title">Nonprofit Founder & Journalism Leader</p>
+        <p class="mentor-description">Founder of BeliefsConnected bridging faith, culture & health; launching a magazine with 15+ journalists; Volunteer Service Award honoree; science‑academy scholar.</p>
+    </div>
+</div>
+
+       </div>
+    </div>
+</body>
+
+</html>

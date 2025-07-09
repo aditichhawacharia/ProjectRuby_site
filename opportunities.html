@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opportunities</title>
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <style>
+        #searchInput {
+            padding: 12px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .opportunities-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 40px;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            color: #333;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 300px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            font-size: 20px;
+            color: #720000;
+            margin-bottom: 10px;
+        }
+        .card .tags, .card .commitment {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            color: #333;
+        }
+        .close-button {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #modalImage {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+    </style>
+    <script defer>
+        async function fetchData() {
+            const response = await fetch('highschool_activities.json');
+            const data = await response.json();
+            renderCards(data);
+
+            const input = document.getElementById('searchInput');
+           input.addEventListener('input', () => {
+    const searchTerm = input.value.toLowerCase();
+    const filtered = data.filter(item =>
+        item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+    );
+    renderCards(filtered);
+});
+
+        }
+
+        function renderCards(activities) {
+            const container = document.getElementById('opportunitiesContainer');
+            container.innerHTML = '';
+            activities.forEach(activity => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3>${activity.name}</h3>
+<div class="tags"><strong>Tags:</strong> ${activity.tags.join(', ')}</div>
+                    <div class="commitment"><strong>Commitment:</strong> ${activity.timeCommitment}</div>
+                `;
+                card.addEventListener('click', () => openModal(activity));
+                container.appendChild(card);
+            });
+        }
+
+        function openModal(activity) {
+            document.getElementById('modalTitle').textContent = activity.name;
+            document.getElementById('modalImage').src = activity.image;
+            document.getElementById('modalDescription').textContent = activity.description;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        window.onload = () => {
+            fetchData();
+
+            document.querySelector('.close-button').addEventListener('click', () => {
+                document.getElementById('modal').style.display = 'none';
+            });
+
+            window.addEventListener('click', e => {
+                if (e.target === document.getElementById('modal')) {
+                    document.getElementById('modal').style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="left">
+            <div class="logo">
+                <img src="assets/images/icon.avif" alt="Logo">
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/mentors" class="nav-item">Mentors</a>
+                <a href="/opportunities" class="nav-item active">Opportunities</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="text-section">
+                <h1>Explore Opportunities</h1>
+                <p class="subtitle">Search by interest, commitment, or tag</p>
+                <input type="text" id="searchInput" placeholder="Search by tag (e.g., STEM, Arts)..." />
+            </div>
+        </div>
+    </section>
+
+    <section class="opportunities-container" id="opportunitiesContainer">
+        <!-- Cards injected by JavaScript -->
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" alt="Opportunity Image" />
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+</body>
+</html>
