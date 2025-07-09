@@ -134,10 +134,31 @@
             margin: 30px 0;
             box-shadow: 0 20px 60px rgba(0,0,0,0.4);
             transition: transform 0.3s ease;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
         
         .mini-page-image:hover {
             transform: scale(1.02);
+        }
+        
+        .mini-page-image.loading {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .mini-page-image.error {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+            flex-direction: column;
+            gap: 10px;
         }
         
         .mini-page-content-card {
@@ -287,19 +308,28 @@
         let currentData = [];
         
         async function fetchData() {
-            const response = await fetch('highschool_activities.json');
-            const data = await response.json();
-            currentData = data;
-            renderCards(data);
+            try {
+                const response = await fetch('highschool_activities.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load data');
+                }
+                const data = await response.json();
+                currentData = data;
+                renderCards(data);
 
-            const input = document.getElementById('searchInput');
-            input.addEventListener('input', () => {
-                const searchTerm = input.value.toLowerCase();
-                const filtered = data.filter(item =>
-                    item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-                );
-                renderCards(filtered);
-            });
+                const input = document.getElementById('searchInput');
+                input.addEventListener('input', () => {
+                    const searchTerm = input.value.toLowerCase();
+                    const filtered = data.filter(item =>
+                        item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                    );
+                    renderCards(filtered);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('opportunitiesContainer').innerHTML = 
+                    '<p style="color: white; text-align: center; width: 100%;">Failed to load opportunities. Please try again later.</p>';
+            }
         }
 
         function renderCards(activities) {
@@ -358,6 +388,14 @@
                 `<span class="difficulty-dot ${i < (activity.difficulty || 1) ? 'filled' : ''}"></span>`
             ).join('');
             
+            // Create image element with proper error handling
+            const imageElement = activity.image ? 
+                `<div class="mini-page-image loading" id="activityImage">Loading image...</div>` : 
+                `<div class="mini-page-image error">
+                    <div>📷</div>
+                    <div>No image available</div>
+                </div>`;
+            
             miniPageContent.innerHTML = `
                 <div class="mini-page-wrapper">
                     <button class="back-button" onclick="closeMiniPage()">
@@ -369,7 +407,7 @@
                         <h1 class="mini-page-title">${activity.name}</h1>
                     </div>
                     
-                    <img class="mini-page-image" src="${activity.image}" alt="${activity.name}" />
+                    ${imageElement}
                     
                     <div class="mini-page-content-card">
                         <div class="mini-page-tags">
@@ -404,6 +442,38 @@
                     </div>
                 </div>
             `;
+            
+            // Handle image loading if image exists
+            if (activity.image) {
+                const imageContainer = document.getElementById('activityImage');
+                const img = new Image();
+                
+                img.onload = function() {
+                    imageContainer.style.backgroundImage = `url(${activity.image})`;
+                    imageContainer.style.backgroundSize = 'cover';
+                    imageContainer.style.backgroundPosition = 'center';
+                    imageContainer.classList.remove('loading');
+                    imageContainer.innerHTML = '';
+                };
+                
+                img.onerror = function() {
+                    imageContainer.classList.remove('loading');
+                    imageContainer.classList.add('error');
+                    imageContainer.innerHTML = `
+                        <div>📷</div>
+                        <div>Image failed to load</div>
+                    `;
+                };
+                
+                // Set a timeout to prevent indefinite loading
+                setTimeout(() => {
+                    if (imageContainer.classList.contains('loading')) {
+                        img.onerror();
+                    }
+                }, 5000); // 5 second timeout
+                
+                img.src = activity.image;
+            }
             
             miniPage.classList.add('active');
             
