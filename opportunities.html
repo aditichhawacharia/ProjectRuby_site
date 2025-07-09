@@ -211,10 +211,39 @@
             color: #333;
         }
         
-        /* Responsive design */
+        /* Mobile responsive design */
         @media (max-width: 768px) {
+            /* Search input mobile */
+            #searchInput {
+                max-width: 100%;
+                margin-top: 15px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            /* Cards mobile */
+            .opportunities-container {
+                padding: 20px 15px;
+                gap: 20px;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+            }
+            
+            .card h3 {
+                font-size: 18px;
+            }
+            
+            .card .tags, .card .commitment {
+                font-size: 13px;
+            }
+            
+            /* Mini-page mobile */
             .mini-page-title {
-                font-size: 2.5em;
+                font-size: 2.2em;
+                margin-bottom: 15px;
             }
             
             .mini-page-wrapper {
@@ -222,16 +251,68 @@
             }
             
             .mini-page-description {
-                padding: 25px;
+                padding: 25px 20px;
+                font-size: 16px;
+                line-height: 1.6;
             }
             
             .mini-page-tags {
                 justify-content: center;
+                gap: 8px;
             }
             
             .tag {
-                padding: 10px 18px;
+                padding: 8px 16px;
                 font-size: 13px;
+            }
+            
+            .back-button {
+                padding: 12px 20px;
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+            
+            .mini-page-commitment {
+                padding: 20px 15px;
+            }
+            
+            .commitment-label {
+                font-size: 14px;
+            }
+            
+            .mini-page-commitment > div:last-child {
+                font-size: 16px;
+            }
+            
+            .mini-page-image {
+                border-radius: 16px;
+                margin: 20px auto;
+            }
+        }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .mini-page-title {
+                font-size: 1.8em;
+            }
+            
+            .mini-page-wrapper {
+                padding: 15px 10px;
+            }
+            
+            .mini-page-description {
+                padding: 20px 15px;
+                font-size: 15px;
+            }
+            
+            .back-button {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+            
+            .tag {
+                padding: 6px 12px;
+                font-size: 12px;
             }
         }
         
@@ -243,6 +324,34 @@
         .main-content.hidden {
             opacity: 0;
             pointer-events: none;
+        }
+        
+        /* Fix for mobile navigation if needed */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 15px;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+            
+            .hero-content {
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
         }
     </style>
     <script defer>
@@ -423,7 +532,7 @@
                 </div>
             </div>
             <div class="right">
-                <a class="nav-item">
+                <a class="nav-item" href="https://instagram.com/projectruby.mentorship">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="lucide lucide-instagram">
