@@ -134,31 +134,10 @@
             margin: 30px 0;
             box-shadow: 0 20px 60px rgba(0,0,0,0.4);
             transition: transform 0.3s ease;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
         
         .mini-page-image:hover {
             transform: scale(1.02);
-        }
-        
-        .mini-page-image.loading {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 18px;
-        }
-        
-        .mini-page-image.error {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 16px;
-            flex-direction: column;
-            gap: 10px;
         }
         
         .mini-page-content-card {
@@ -308,28 +287,19 @@
         let currentData = [];
         
         async function fetchData() {
-            try {
-                const response = await fetch('highschool_activities.json');
-                if (!response.ok) {
-                    throw new Error('Failed to load data');
-                }
-                const data = await response.json();
-                currentData = data;
-                renderCards(data);
+            const response = await fetch('highschool_activities.json');
+            const data = await response.json();
+            currentData = data;
+            renderCards(data);
 
-                const input = document.getElementById('searchInput');
-                input.addEventListener('input', () => {
-                    const searchTerm = input.value.toLowerCase();
-                    const filtered = data.filter(item =>
-                        item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-                    );
-                    renderCards(filtered);
-                });
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                document.getElementById('opportunitiesContainer').innerHTML = 
-                    '<p style="color: white; text-align: center; width: 100%;">Failed to load opportunities. Please try again later.</p>';
-            }
+            const input = document.getElementById('searchInput');
+            input.addEventListener('input', () => {
+                const searchTerm = input.value.toLowerCase();
+                const filtered = data.filter(item =>
+                    item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+                renderCards(filtered);
+            });
         }
 
         function renderCards(activities) {
@@ -357,8 +327,13 @@
                 index: index 
             }, activity.name, newUrl);
             
-            // Show mini page directly
-            showMiniPage(activity);
+            // Show loading first
+            showLoading();
+            
+            // Simulate loading time for realistic page transition
+            setTimeout(() => {
+                showMiniPage(activity);
+            }, 300);
         }
         
         function showLoading() {
@@ -376,55 +351,13 @@
             miniPage.classList.add('active');
         }
 
-        function validateAndCleanImageUrl(url) {
-            if (!url || typeof url !== 'string') return null;
-            
-            // Clean up common URL encoding issues
-            let cleanUrl = url.trim();
-            
-            // Handle double-encoded URLs
-            try {
-                // Try to decode if it's already encoded
-                if (cleanUrl.includes('%')) {
-                    cleanUrl = decodeURIComponent(cleanUrl);
-                }
-            } catch (e) {
-                // If decoding fails, use original URL
-                cleanUrl = url;
-            }
-            
-            // Check if it's a valid URL
-            try {
-                new URL(cleanUrl);
-                return cleanUrl;
-            } catch (e) {
-                console.warn('Invalid image URL:', url);
-                return null;
-            }
-        }
-
         function showMiniPage(activity) {
-            const mainContent = document.querySelector('.main-content');
-            mainContent.classList.add('hidden');
-            
-            const miniPage = document.getElementById('miniPage');
             const miniPageContent = document.querySelector('.mini-page-content');
             
             // Create difficulty dots
             const difficultyDots = Array.from({length: 5}, (_, i) => 
                 `<span class="difficulty-dot ${i < (activity.difficulty || 1) ? 'filled' : ''}"></span>`
             ).join('');
-            
-            // Validate and clean the image URL
-            const cleanImageUrl = validateAndCleanImageUrl(activity.image);
-            
-            // Create image element with proper error handling
-            const imageElement = cleanImageUrl ? 
-                `<div class="mini-page-image loading" id="activityImage">Loading image...</div>` : 
-                `<div class="mini-page-image error">
-                    <div>📷</div>
-                    <div>No image available</div>
-                </div>`;
             
             miniPageContent.innerHTML = `
                 <div class="mini-page-wrapper">
@@ -437,7 +370,7 @@
                         <h1 class="mini-page-title">${activity.name}</h1>
                     </div>
                     
-                    ${imageElement}
+                    <img class="mini-page-image" src="${activity.image}" alt="${activity.name}" />
                     
                     <div class="mini-page-content-card">
                         <div class="mini-page-tags">
@@ -472,52 +405,6 @@
                     </div>
                 </div>
             `;
-            
-            // Handle image loading if clean image URL exists
-            if (cleanImageUrl) {
-                const imageContainer = document.getElementById('activityImage');
-                const img = new Image();
-                
-                // Add CORS support for external images
-                img.crossOrigin = 'anonymous';
-                
-                img.onload = function() {
-                    imageContainer.style.backgroundImage = `url("${cleanImageUrl}")`;
-                    imageContainer.style.backgroundSize = 'cover';
-                    imageContainer.style.backgroundPosition = 'center';
-                    imageContainer.classList.remove('loading');
-                    imageContainer.innerHTML = '';
-                };
-                
-                img.onerror = function() {
-                    console.warn('Failed to load image:', cleanImageUrl);
-                    imageContainer.classList.remove('loading');
-                    imageContainer.classList.add('error');
-                    imageContainer.innerHTML = `
-                        <div>📷</div>
-                        <div>Image failed to load</div>
-                        <div style="font-size: 12px; opacity: 0.7;">URL: ${cleanImageUrl.substring(0, 50)}...</div>
-                    `;
-                };
-                
-                // Set a timeout to prevent indefinite loading
-                setTimeout(() => {
-                    if (imageContainer.classList.contains('loading')) {
-                        console.warn('Image loading timeout:', cleanImageUrl);
-                        img.onerror();
-                    }
-                }, 5000); // 5 second timeout
-                
-                // Try loading the image
-                try {
-                    img.src = cleanImageUrl;
-                } catch (e) {
-                    console.error('Error setting image src:', e);
-                    img.onerror();
-                }
-            }
-            
-            miniPage.classList.add('active');
             
             // Update page title
             document.title = `${activity.name} - Opportunities`;
