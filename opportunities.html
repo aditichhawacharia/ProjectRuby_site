@@ -47,7 +47,7 @@
             margin-bottom: 8px;
         }
         
-        /* Mini-page styles - simplified */
+        /* Mini-page styles */
         .mini-page {
             display: none;
             position: fixed;
@@ -55,7 +55,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #720000 0%, #2b0000 100%);
+            background: #f5f5f5;
             z-index: 1000;
             overflow-y: auto;
         }
@@ -65,163 +65,89 @@
         }
         
         .mini-page-content {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
+            background: white;
             min-height: 100vh;
-            position: relative;
         }
         
         .back-button {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 24px;
-            background: rgba(255, 255, 255, 0.1);
+            gap: 8px;
+            padding: 12px 20px;
+            background: #720000;
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
+            border: none;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 40px;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            margin-bottom: 30px;
+            transition: background 0.2s;
         }
         
         .back-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
+            background: #9a0000;
         }
         
         .back-arrow {
-            font-size: 20px;
-            transition: transform 0.3s ease;
-        }
-        
-        .back-button:hover .back-arrow {
-            transform: translateX(-4px);
+            font-size: 18px;
         }
         
         .mini-page-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         .mini-page-title {
-            font-size: 3.5em;
-            color: white;
+            font-size: 2.5em;
+            color: #720000;
             margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            font-weight: 700;
-            line-height: 1.2;
         }
         
-        /* Simplified image styles */
         .mini-page-image {
             width: 100%;
             max-width: 600px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 24px;
-            margin: 30px auto;
+            border-radius: 16px;
+            margin: 20px auto;
             display: block;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease;
-        }
-        
-        .mini-page-image:hover {
-            transform: scale(1.02);
-        }
-        
-        .mini-page-content-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
         
         .mini-page-description {
             font-size: 18px;
-            line-height: 1.8;
+            line-height: 1.6;
             color: #333;
-            margin-bottom: 30px;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
             margin: 30px 0;
-        }
-        
-        .info-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 24px;
-            border-radius: 16px;
-            border-left: 4px solid #720000;
-        }
-        
-        .info-label {
-            font-weight: 700;
-            color: #720000;
-            font-size: 16px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .info-value {
-            font-size: 16px;
-            color: #333;
-            font-weight: 500;
         }
         
         .mini-page-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin: 30px 0;
+            gap: 10px;
+            margin: 20px 0;
         }
         
         .tag {
-            background: linear-gradient(135deg, #720000 0%, #9a0000 100%);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(114, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(114, 0, 0, 0.4);
-        }
-        
-        .difficulty-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .difficulty-dots {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .difficulty-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #ddd;
-        }
-        
-        .difficulty-dot.filled {
             background: #720000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .mini-page-commitment {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .commitment-label {
+            font-weight: bold;
+            color: #720000;
+            margin-bottom: 10px;
         }
         
         /* Smooth transitions */
@@ -232,48 +158,6 @@
         .main-content.hidden {
             opacity: 0;
             pointer-events: none;
-        }
-        
-        /* Loading animation */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: white;
-        }
-        
-        .loading::after {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid white;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .mini-page-title {
-                font-size: 2.5em;
-            }
-            
-            .mini-page-content {
-                padding: 20px 15px;
-            }
-            
-            .mini-page-content-card {
-                padding: 25px;
-            }
-            
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
     <script defer>
@@ -312,6 +196,7 @@
         }
 
         function openMiniPage(activity, index) {
+            // Update URL to simulate new page (increases page views)
             const newUrl = `${window.location.pathname}?opportunity=${encodeURIComponent(activity.name.toLowerCase().replace(/\s+/g, '-'))}&id=${index}`;
             history.pushState({ 
                 page: 'opportunity', 
@@ -319,31 +204,16 @@
                 index: index 
             }, activity.name, newUrl);
             
-            showLoading();
-            
-            setTimeout(() => {
-                showMiniPage(activity);
-            }, 300);
+            // Show mini page directly (no loading)
+            showMiniPage(activity);
         }
-        
-        function showLoading() {
+
+        function showMiniPage(activity) {
             const mainContent = document.querySelector('.main-content');
             mainContent.classList.add('hidden');
             
             const miniPage = document.getElementById('miniPage');
             const miniPageContent = document.querySelector('.mini-page-content');
-            
-            miniPageContent.innerHTML = '<div class="loading">Loading opportunity...</div>';
-            miniPage.classList.add('active');
-        }
-
-        function showMiniPage(activity) {
-            const miniPageContent = document.querySelector('.mini-page-content');
-            
-            // Create difficulty dots
-            const difficultyDots = Array.from({length: 5}, (_, i) => 
-                `<span class="difficulty-dot ${i < (activity.difficulty || 1) ? 'filled' : ''}"></span>`
-            ).join('');
             
             miniPageContent.innerHTML = `
                 <button class="back-button" onclick="closeMiniPage()">
@@ -357,53 +227,24 @@
                 
                 <img class="mini-page-image" src="${activity.image}" alt="${activity.name}" />
                 
-                <div class="mini-page-content-card">
-                    <div class="mini-page-tags">
-                        ${activity.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-section">
-                            <div class="info-label">Time Commitment</div>
-                            <div class="info-value">${activity.timeCommitment || 'Not specified'}</div>
-                        </div>
-                        
-                        <div class="info-section">
-                            <div class="info-label">Interests</div>
-                            <div class="info-value">${activity.interests ? activity.interests.join(', ') : 'Various'}</div>
-                        </div>
-                        
-                        <div class="info-section">
-                            <div class="info-label">Difficulty Level</div>
-                            <div class="info-value">
-                                <div class="difficulty-indicator">
-                                    <div class="difficulty-dots">${difficultyDots}</div>
-                                    <span>${activity.difficulty || 1}/5</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mini-page-description">
-                        ${activity.description}
-                    </div>
+                <div class="mini-page-tags">
+                    ${activity.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                
+                <div class="mini-page-commitment">
+                    <div class="commitment-label">Time Commitment:</div>
+                    <div>${activity.timeCommitment}</div>
+                </div>
+                
+                <div class="mini-page-description">
+                    ${activity.description}
                 </div>
             `;
             
+            miniPage.classList.add('active');
+            
             // Update page title
             document.title = `${activity.name} - Opportunities`;
-            
-            // Add error handling for image loading
-            const img = document.querySelector('.mini-page-image');
-            if (img) {
-                img.onerror = function() {
-                    console.error('Failed to load image:', this.src);
-                    this.style.display = 'none';
-                };
-                img.onload = function() {
-                    console.log('Image loaded successfully:', this.src);
-                };
-            }
         }
 
         function closeMiniPage() {
@@ -413,6 +254,7 @@
             miniPage.classList.remove('active');
             mainContent.classList.remove('hidden');
             
+            // Restore original URL and title
             history.pushState(null, 'Opportunities', window.location.pathname);
             document.title = 'Opportunities';
         }
@@ -426,7 +268,7 @@
             }
         });
         
-        // Handle direct URL access
+        // Handle direct URL access (if someone shares the link)
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const opportunityId = urlParams.get('id');
