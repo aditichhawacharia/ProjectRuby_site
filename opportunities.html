@@ -6,7 +6,7 @@
     <title>Opportunities</title>
     <link rel="stylesheet" href="assets/css/index.css" />
     <style>
-        searchInput {
+        #searchInput {
             padding: 12px;
             width: 100%;
             max-width: 400px;
@@ -327,10 +327,30 @@
                 index: index 
             }, activity.name, newUrl);
             
-    
-                showMiniPage(activity);
+            // Show mini page directly
+            showMiniPage(activity);
+        }
         
+        function showLoading() {
+            const mainContent = document.querySelector('.main-content');
+            mainContent.classList.add('hidden');
+            
+            const miniPage = document.getElementById('miniPage');
+            const miniPageContent = document.querySelector('.mini-page-content');
+            
+            miniPageContent.innerHTML = `
+                <div class="mini-page-wrapper">
+                    <div class="loading">Loading opportunity...</div>
+                </div>
+            `;
+            miniPage.classList.add('active');
+        }
+
         function showMiniPage(activity) {
+            const mainContent = document.querySelector('.main-content');
+            mainContent.classList.add('hidden');
+            
+            const miniPage = document.getElementById('miniPage');
             const miniPageContent = document.querySelector('.mini-page-content');
             
             // Create difficulty dots
@@ -384,6 +404,8 @@
                     </div>
                 </div>
             `;
+            
+            miniPage.classList.add('active');
             
             // Update page title
             document.title = `${activity.name} - Opportunities`;
