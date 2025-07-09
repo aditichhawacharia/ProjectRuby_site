@@ -327,30 +327,9 @@
                 index: index 
             }, activity.name, newUrl);
             
-            // Show loading first
-            showLoading();
-            
-            // Simulate loading time for realistic page transition
-            setTimeout(() => {
+    
                 showMiniPage(activity);
-            }, 10);
-        }
         
-        function showLoading() {
-            const mainContent = document.querySelector('.main-content');
-            mainContent.classList.add('hidden');
-            
-            const miniPage = document.getElementById('miniPage');
-            const miniPageContent = document.querySelector('.mini-page-content');
-            
-            miniPageContent.innerHTML = `
-                <div class="mini-page-wrapper">
-                    <div class="loading">Loading opportunity...</div>
-                </div>
-            `;
-            miniPage.classList.add('active');
-        }
-
         function showMiniPage(activity) {
             const miniPageContent = document.querySelector('.mini-page-content');
             
