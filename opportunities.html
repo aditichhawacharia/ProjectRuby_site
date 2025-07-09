@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Opportunities</title>
     <link rel="stylesheet" href="assets/css/index.css" />
-            <script defer src="https://cloud.umami.is/script.js" data-website-id="1e47dea7-560e-497a-b096-12a8721942ab"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1e47dea7-560e-497a-b096-12a8721942ab"></script>
 
     <style>
         #searchInput {
@@ -47,17 +47,17 @@
             margin-bottom: 8px;
         }
         
-        /* Mini-page styles */
+        /* Mini-page styles - simplified */
         .mini-page {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #720000 0%, #2b0000 100%);
             z-index: 1000;
-            overflow: hidden;
+            overflow-y: auto;
         }
         
         .mini-page.active {
@@ -65,15 +65,6 @@
         }
         
         .mini-page-content {
-            width: 100%;
-            height: 100vh;
-            overflow-y: auto;
-            padding: 0;
-            margin: 0;
-            background: linear-gradient(135deg, #720000 0%, #2b0000 100%);
-        }
-        
-        .mini-page-wrapper {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
@@ -87,7 +78,6 @@
             gap: 12px;
             padding: 16px 24px;
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 50px;
@@ -128,6 +118,7 @@
             line-height: 1.2;
         }
         
+        /* Simplified image styles */
         .mini-page-image {
             width: 100%;
             max-width: 600px;
@@ -146,7 +137,6 @@
         
         .mini-page-content-card {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
             border-radius: 24px;
             padding: 40px;
             margin: 30px 0;
@@ -244,13 +234,36 @@
             pointer-events: none;
         }
         
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         /* Responsive design */
         @media (max-width: 768px) {
             .mini-page-title {
                 font-size: 2.5em;
             }
             
-            .mini-page-wrapper {
+            .mini-page-content {
                 padding: 20px 15px;
             }
             
@@ -299,7 +312,6 @@
         }
 
         function openMiniPage(activity, index) {
-            // Update URL to simulate new page (increases page views)
             const newUrl = `${window.location.pathname}?opportunity=${encodeURIComponent(activity.name.toLowerCase().replace(/\s+/g, '-'))}&id=${index}`;
             history.pushState({ 
                 page: 'opportunity', 
@@ -307,15 +319,25 @@
                 index: index 
             }, activity.name, newUrl);
             
-            // Show mini page directly (no loading)
-            showMiniPage(activity);
+            showLoading();
+            
+            setTimeout(() => {
+                showMiniPage(activity);
+            }, 300);
         }
-
-        function showMiniPage(activity) {
+        
+        function showLoading() {
             const mainContent = document.querySelector('.main-content');
             mainContent.classList.add('hidden');
             
             const miniPage = document.getElementById('miniPage');
+            const miniPageContent = document.querySelector('.mini-page-content');
+            
+            miniPageContent.innerHTML = '<div class="loading">Loading opportunity...</div>';
+            miniPage.classList.add('active');
+        }
+
+        function showMiniPage(activity) {
             const miniPageContent = document.querySelector('.mini-page-content');
             
             // Create difficulty dots
@@ -324,56 +346,64 @@
             ).join('');
             
             miniPageContent.innerHTML = `
-                <div class="mini-page-wrapper">
-                    <button class="back-button" onclick="closeMiniPage()">
-                        <span class="back-arrow">←</span>
-                        Back to Opportunities
-                    </button>
-                    
-                    <div class="mini-page-header">
-                        <h1 class="mini-page-title">${activity.name}</h1>
+                <button class="back-button" onclick="closeMiniPage()">
+                    <span class="back-arrow">←</span>
+                    Back to Opportunities
+                </button>
+                
+                <div class="mini-page-header">
+                    <h1 class="mini-page-title">${activity.name}</h1>
+                </div>
+                
+                <img class="mini-page-image" src="${activity.image}" alt="${activity.name}" />
+                
+                <div class="mini-page-content-card">
+                    <div class="mini-page-tags">
+                        ${activity.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
                     
-                    <img class="mini-page-image" src="${activity.image}" alt="${activity.name}" />
-                    
-                    <div class="mini-page-content-card">
-                        <div class="mini-page-tags">
-                            ${activity.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    <div class="info-grid">
+                        <div class="info-section">
+                            <div class="info-label">Time Commitment</div>
+                            <div class="info-value">${activity.timeCommitment || 'Not specified'}</div>
                         </div>
                         
-                        <div class="info-grid">
-                            <div class="info-section">
-                                <div class="info-label">Time Commitment</div>
-                                <div class="info-value">${activity.timeCommitment || 'Not specified'}</div>
-                            </div>
-                            
-                            <div class="info-section">
-                                <div class="info-label">Interests</div>
-                                <div class="info-value">${activity.interests ? activity.interests.join(', ') : 'Various'}</div>
-                            </div>
-                            
-                            <div class="info-section">
-                                <div class="info-label">Difficulty Level</div>
-                                <div class="info-value">
-                                    <div class="difficulty-indicator">
-                                        <div class="difficulty-dots">${difficultyDots}</div>
-                                        <span>${activity.difficulty || 1}/5</span>
-                                    </div>
+                        <div class="info-section">
+                            <div class="info-label">Interests</div>
+                            <div class="info-value">${activity.interests ? activity.interests.join(', ') : 'Various'}</div>
+                        </div>
+                        
+                        <div class="info-section">
+                            <div class="info-label">Difficulty Level</div>
+                            <div class="info-value">
+                                <div class="difficulty-indicator">
+                                    <div class="difficulty-dots">${difficultyDots}</div>
+                                    <span>${activity.difficulty || 1}/5</span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="mini-page-description">
-                            ${activity.description}
-                        </div>
+                    </div>
+                    
+                    <div class="mini-page-description">
+                        ${activity.description}
                     </div>
                 </div>
             `;
             
-            miniPage.classList.add('active');
-            
             // Update page title
             document.title = `${activity.name} - Opportunities`;
+            
+            // Add error handling for image loading
+            const img = document.querySelector('.mini-page-image');
+            if (img) {
+                img.onerror = function() {
+                    console.error('Failed to load image:', this.src);
+                    this.style.display = 'none';
+                };
+                img.onload = function() {
+                    console.log('Image loaded successfully:', this.src);
+                };
+            }
         }
 
         function closeMiniPage() {
@@ -383,7 +413,6 @@
             miniPage.classList.remove('active');
             mainContent.classList.remove('hidden');
             
-            // Restore original URL and title
             history.pushState(null, 'Opportunities', window.location.pathname);
             document.title = 'Opportunities';
         }
@@ -397,7 +426,7 @@
             }
         });
         
-        // Handle direct URL access (if someone shares the link)
+        // Handle direct URL access
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const opportunityId = urlParams.get('id');
