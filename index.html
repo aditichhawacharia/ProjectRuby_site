@@ -6,8 +6,427 @@
     <title>Project Ruby</title>
     <link rel="stylesheet" href="assets/css/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="1e47dea7-560e-497a-b096-12a8721942ab"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1e47dea7-560e-497a-b096-12a8721942ab"></script>
+    <style>
+        /* Additional styles for new sections */
+        .what-we-do {
+            margin: 40px;
+            background: linear-gradient(120deg, #ffe0e6 0%, #fdcad3 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            color: #10141a;
+        }
 
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .what-we-do h2 {
+            font-size: 48px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #720000;
+        }
+
+        .program-section {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .program-section h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #720000;
+        }
+
+        .program-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 14px;
+            border-left: 4px solid #720000;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .step-number {
+            background: #720000;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .step-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #720000;
+        }
+
+        .step-content p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .mentoring-areas {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 25px;
+            border-radius: 14px;
+            border-left: 4px solid #720000;
+        }
+
+        .mentoring-areas h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #720000;
+        }
+
+        .mentoring-areas ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mentoring-areas li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: #444;
+            font-size: 16px;
+        }
+
+        .mentoring-areas li:before {
+            content: "•";
+            color: #720000;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .get-involved {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .get-involved h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #720000;
+            text-align: center;
+        }
+
+        .involvement-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover {
+            border-color: #720000;
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .option-card h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #720000;
+        }
+
+        .option-card p {
+            color: #444;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #720000;
+            color: white;
+            padding: 14px 24px;
+            font-size: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #a00000;
+            transform: translateY(-2px);
+        }
+
+        .additional-resources {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .additional-resources h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #720000;
+            text-align: center;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            border-color: #720000;
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .resource-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #720000;
+        }
+
+        .resource-item p {
+            color: #444;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .mission-founder {
+            margin: 40px;
+            background: linear-gradient(120deg, #720000 0%, #a00000 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            color: #f5f5f5;
+        }
+
+        .mission-founder .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .mission-section h2,
+        .founder-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #f5f5f5;
+        }
+
+        .mission-section p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #f5f5f5;
+            font-size: 16px;
+        }
+
+        .founder-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .founder-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #f5f5f5;
+        }
+
+        .founder-info p {
+            color: #f5f5f5;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .founder-info p:first-of-type {
+            font-weight: 600;
+            color: #ffe0e6;
+        }
+
+        @media (max-width: 768px) {
+            .mission-founder .section-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .involvement-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .what-we-do h2 {
+                font-size: 36px;
+            }
+            
+            .mission-section h2,
+            .founder-section h2 {
+                font-size: 28px;
+            }
+        }
+        /* --- Modern Section Styling --- */
+
+.section-modern {
+    padding: 60px 30px;
+    max-width: 1200px;
+    margin: auto;
+    color: #10141a;
+}
+
+.section-modern h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #720000;
+}
+
+/* Modern Card Styling */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 24px;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #720000;
+}
+
+.card p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #720000;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 12px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #a00000;
+}
+
+/* Mission and Founder Grid */
+.mission-founder-modern {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 80px;
+}
+
+.mission-text, .founder-card-modern {
+    flex: 1;
+    min-width: 300px;
+}
+
+.founder-card-modern {
+    background: #fff;
+    border-left: 4px solid #720000;
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.founder-card-modern h4 {
+    color: #720000;
+    margin-bottom: 10px;
+}
+
+    </style>
 </head>
 
 <body>
@@ -72,7 +491,6 @@
     </div>
 
     <div class="hero">
-
         <div class="hero-content">
             <div class="text-section">
                 <h1>Project Ruby</h1>
@@ -106,6 +524,61 @@
             </div>
         </div>
     </div>
-</body>
 
+    <div class="section-modern">
+    <h2 style="color: white">What We Do</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3>1. Apply to be a Mentee</h3>
+            <p>Start your leadership journey by joining our mentorship program designed for middle and high school girls.</p>
+        </div>
+        <div class="card">
+            <h3>2. Get Matched</h3>
+            <p>We pair you with an experienced mentor based on your goals and interests, fostering a meaningful connection.</p>
+        </div>
+        <div class="card">
+            <h3>3. Grow Through Mentorship</h3>
+            <p>Receive personalized one-on-one guidance to launch projects, grow confidence, and develop leadership skills.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section-modern">
+    <h2  style="color: white">Get Involved</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3>Become a Mentee</h3>
+            <p>Ready to unlock your leadership potential? Apply to join our mentorship network.</p>
+            <a href="https://forms.gle/9f62vSaGxHLpAodq6" class="btn-primary">Apply as Mentee</a>
+        </div>
+        <div class="card">
+            <h3>Become a Mentor</h3>
+            <p>Share your experience and support future changemakers. Open to passionate high schoolers & beyond.</p>
+            <a href="https://forms.gle/TPdNtqS8HGQeHx4U6" class="btn-primary">Apply as Mentor</a>
+        </div>
+    </div>
+</div>
+
+<div class="section-modern">
+    <h2  style="color: white">Resources</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3>Opportunities</h3>
+            <p>Discover hand-picked internships, contests, and leadership programs tailored to girls in STEM, business, and more.</p>
+        </div>
+        <div class="card">
+            <h3>Guides</h3>
+            <p>Step-by-step guides on launching passion projects, building nonprofits, and mastering skills.</p>
+        </div>
+        <div class="card">
+            <h3>Chapters</h3>
+            <p>Coming soon: Start a local Project Ruby chapter and build a network of empowered girls in your city.</p>
+        </div>
+        <div class="card">
+            <h3>Events</h3>
+            <p>Coming soon: Attend speaker events, skill-building workshops, and community meetups.</p>
+        </div>
+    </div>
+</div>
+</body>
 </html>
