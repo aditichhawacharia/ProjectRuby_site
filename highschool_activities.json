@@ -615,16 +615,6 @@
       "timeCommitment": "1-2 years preparation, weekend conference"
     },
     {
-      "category": "Environmental Science",
-      "name": "Environmental Challenge from National Geographic",
-      "description": "Students develop solutions to environmental problems. Winners receive mentorship from National Geographic explorers and significant media coverage.",
-      "difficulty": "High",
-      "image": "https://example.com/natgeo-challenge.jpg",
-      "interests": ["Environmental Science", "Conservation", "Geography", "Sustainability"],
-      "tags": ["Environment", "National Geographic", "Challenge", "Sustainability"],
-      "timeCommitment": "4-6 months to develop project"
-    },
-    {
       "category": "Medicine & Health",
       "name": "Health Occupations Students of America (HOSA)",
       "description": "National competition in health sciences. Winners demonstrate readiness for medical careers and often receive recognition from medical schools.",
@@ -643,16 +633,6 @@
       "interests": ["Community Service", "Volunteering", "Social Impact"],
       "tags": ["Service", "Presidential", "Award", "Community"],
       "timeCommitment": "1-2 years, 250+ hours of service"
-    },
-    {
-      "category": "History & Social Studies",
-      "name": "National History Day Competition",
-      "description": "National competition requiring deep historical research and presentation skills. Winners demonstrate advanced analytical and research abilities.",
-      "difficulty": "High",
-      "image": "https://example.com/nhd-logo.jpg",
-      "interests": ["History", "Research", "Social Studies", "Writing"],
-      "tags": ["History", "Research", "Competition", "Academic"],
-      "timeCommitment": "8-12 months for research and preparation"
     },
     {
       "category": "Language & Culture",
@@ -723,6 +703,307 @@
       "interests": ["STEM", "Education", "Teaching", "Community Service"],
       "tags": ["STEM", "Education", "Teaching", "Outreach"],
       "timeCommitment": "1-2 years, 5-8 hours per week"
-    }
-    ]
+    },
+  {
+    "category": "Medicine & Health",
+    "name": "Hospital Teen Advisory Board",
+    "description": "Serve on a youth board advising hospital leadership on teen health initiatives.",
+    "difficulty": "Moderate",
+    "image": "https://norfolkpl.org/wp-content/uploads/2018/09/teen-advisory-board_163_md.jpg",
+    "interests": ["Medicine", "Public Health", "Leadership"],
+    "tags": ["Medicine", "Leadership", "Health Policy"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Medicine & Health",
+    "name": "Public Health Infographic Series",
+    "description": "Design a weekly health awareness infographic series for school and social media.",
+    "difficulty": "Moderate",
+    "image": "https://media.slidesgo.com/storage/152086/responsive-images/0-healthcare-infographics___media_library_original_655_368.jpg",
+    "interests": ["Public Health", "Design", "Medicine"],
+    "tags": ["Public Health", "Design", "Awareness"],
+    "timeCommitment": "3-6 months"
+  },
+  {
+    "category": "Medicine & Health",
+    "name": "Blood Drive Coordinator",
+    "description": "Partner with Red Cross to organize annual blood donation drives.",
+    "difficulty": "Moderate",
+    "image": "https://s3.amazonaws.com/cobbcounty.org.if-us-east-1/s3fs-public/2022-08/Blood-Drive.jpg",
+    "interests": ["Healthcare", "Volunteering", "Organization"],
+    "tags": ["Medicine", "Community Service", "Event Planning"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Medicine & Health",
+    "name": "Youth Bioethics Book Club",
+    "description": "Lead discussions on medical ethics through popular science and bioethics texts.",
+    "difficulty": "High",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpVnaEGXuYwd5CG9PTe7iXXjHgoQ76ieypSg&s",
+    "interests": ["Medicine", "Ethics", "Discussion"],
+    "tags": ["Bioethics", "Discussion", "Leadership"],
+    "timeCommitment": "6 months"
+  },
+  {
+    "category": "Medicine & Health",
+    "name": "Medical Spanish Study Group",
+    "description": "Learn medical Spanish to better communicate in clinical settings.",
+    "difficulty": "High",
+    "image": "https://se-images.campuslabs.com/clink/images/433d696b-f855-4b43-b159-db96ebd898c5295c8f0a-003b-48e5-828c-4c1317eab82e.png",
+    "interests": ["Medicine", "Languages", "Health Equity"],
+    "tags": ["Languages", "Health Equity", "Medicine"],
+    "timeCommitment": "4-8 months"
+  },
+  {
+    "category": "Business & Entrepreneurship",
+    "name": "Financial Literacy Workshops for Teens",
+    "description": "Host peer-led workshops on budgeting, investing, and credit basics.",
+    "difficulty": "High",
+    "image": "https://worklife.hr.ufl.edu/wp-content/uploads/sites/7/2023/03/UFHR_Wellness_FinancialLiteracy_UFAtWork-300x300.jpg",
+    "interests": ["Finance", "Education", "Leadership"],
+    "tags": ["Finance", "Education", "Workshop"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Business & Entrepreneurship",
+    "name": "E‑Commerce Product Launch",
+    "description": "Design and sell a product using an online marketplace like Etsy or Shopify.",
+    "difficulty": "Very High",
+    "image": "https://www.launch-marketing.com/wp-content/uploads/2018/07/GettyImages-1134023751.jpg",
+    "interests": ["Entrepreneurship", "Marketing", "Design"],
+    "tags": ["ECommerce", "Entrepreneurship", "Product Design"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Business & Entrepreneurship",
+    "name": "Local Business Spotlight Blog",
+    "description": "Interview small business owners and write blog posts about their journey.",
+    "difficulty": "Moderate",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0I1vdXD9oHS9-K1qgiYA2limSUU9vr_IfOQ&s",
+    "interests": ["Journalism", "Networking", "Business"],
+    "tags": ["Blogging", "Interviews", "Community"],
+    "timeCommitment": "3-6 months"
+  },
+  {
+    "category": "Business & Entrepreneurship",
+    "name": "Student Investment Fund",
+    "description": "Start a mock investment group where students track and pitch real stocks.",
+    "difficulty": "High",
+    "image": "https://www.anderson.ucla.edu/sites/default/files/styles/max_1300x1300/public/images/2017/sites/centers/price/2020/SIF/2020PRICE-SIF-Logo-4C.png?itok=sJtXPJ5a",
+    "interests": ["Finance", "Analysis", "Leadership"],
+    "tags": ["Investment", "Finance", "Teamwork"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Business & Entrepreneurship",
+    "name": "Gen Z Business Trends Podcast",
+    "description": "Produce a podcast discussing new business trends popular among teens.",
+    "difficulty": "High",
+    "image": "https://img.freepik.com/premium-vector/business-podcast-logo-design_121524-63.jpg",
+    "interests": ["Media", "Business", "Communication"],
+    "tags": ["Podcasting", "Trends", "Content Creation"],
+    "timeCommitment": "4-8 months"
+  },
+  {
+    "category": "Engineering & Design",
+    "name": "Reverse Engineering Project",
+    "description": "Disassemble a common household device and explain its engineering components.",
+    "difficulty": "High",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfF-fZl2vuLiYK5Em1-vUlHczquekPftfqoQ&s",
+    "interests": ["Engineering", "Mechanics", "Problem Solving"],
+    "tags": ["DIY", "Analysis", "Hands‑On"],
+    "timeCommitment": "4-8 months"
+  },
+  {
+    "category": "Engineering & Design",
+    "name": "Bridge Building Competition",
+    "description": "Participate in structural design contests using balsa wood or software modeling.",
+    "difficulty": "High",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD7svXpohUnonZ8rbduBFcrHnkgaLVJmruPg&s",
+    "interests": ["Structures", "Design", "Engineering"],
+    "tags": ["Competition", "Structural Engineering", "Teamwork"],
+    "timeCommitment": "3-6 months"
+  },
+  {
+    "category": "Engineering & Design",
+    "name": "3D Printing for Good",
+    "description": "Design and print tools, prosthetics, or educational models for your community.",
+    "difficulty": "Very High",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhgDwKPT21s0JeKmodh4Zk3eQzYLErApq6eg&s",
+    "interests": ["Engineering", "3D Printing", "Community Service"],
+    "tags": ["Innovation", "Maker", "Service"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Engineering & Design",
+    "name": "Intro to CAD Workshops",
+    "description": "Teach basic CAD skills (e.g., Fusion 360) to other students.",
+    "difficulty": "Moderate",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/Fusion360_Logo.png",
+    "interests": ["Design", "Teaching", "Engineering"],
+    "tags": ["CAD", "Education", "Workshops"],
+    "timeCommitment": "4-6 months"
+  },
+  {
+    "category": "Engineering & Design",
+    "name": "Renewable Energy Model",
+    "description": "Build a small wind or solar-powered device to demonstrate green tech.",
+    "difficulty": "High",
+    "image": "https://t3.ftcdn.net/jpg/05/01/67/16/360_F_501671677_FWeIBg3DHRL2rHbirCoJWAAXdgqn93pC.jpg",
+    "interests": ["Renewable Energy", "Engineering", "Environment"],
+    "tags": ["Green Tech", "Design", "STEM"],
+    "timeCommitment": "4-8 months"
+  },
+  {
+    "category": "Law & Policy",
+    "name": "Mock Trial Club",
+    "description": "Simulate real court cases and compete in regional mock trial tournaments.",
+    "difficulty": "High",
+    "image": "https://thelionsroarmhsn.com/wp-content/uploads/2018/10/MockTrialLogo-02000copy2-900x643.png",
+    "interests": ["Law", "Public Speaking", "Advocacy"],
+    "tags": ["Court", "Debate", "Teamwork"],
+    "timeCommitment": "1 year"
+  },
+  {
+    "category": "Law & Policy",
+    "name": "Youth Justice Blog",
+    "description": "Write articles on criminal justice reform and youth policy topics.",
+    "difficulty": "High",
+    "image": "https://youthrightsjustice.org/wp-content/uploads/2020/06/Round-no-tag-e1591059681249.png",
+    "interests": ["Law", "Writing", "Policy Analysis"],
+    "tags": ["Blogging", "Advocacy", "Reform"],
+    "timeCommitment": "6 months"
+  },
+  {
+    "category": "Law & Policy",
+    "name": "Court Observation Project",
+    "description": "Attend public court sessions and reflect on proceedings in a journal.",
+    "difficulty": "Moderate",
+    "image": "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/publication/thumbnail/b41a9143-6fa2-4a84-a249-ee349ebfe3ea/landscape_Court_Watch_Logo_No_Name.png",
+    "interests": ["Law", "Observation", "Critical Thinking"],
+    "tags": ["Court Visits", "Reflection", "Journal"],
+    "timeCommitment": "3 months"
+  },
+  {
+    "category": "Law & Policy",
+    "name": "Civic Action Campaign",
+    "description": "Organize a campaign around a local issue to influence policy or awareness.",
+    "difficulty": "Very High",
+    "image": "https://i0.wp.com/csactioncommittee.org/wp-content/uploads/2020/07/cropped-csca-LOGO-FINAL_web.gif?fit=460%2C459&ssl=1",
+    "interests": ["Policy", "Leadership", "Advocacy"],
+    "tags": ["Campaign", "Community", "Policy Change"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Law & Policy",
+    "name": "Legal Aid Volunteer",
+    "description": "Support local legal aid clinics with outreach, translation, or admin tasks.",
+    "difficulty": "Moderate",
+    "image": "https://www.probono.net/images/areas/29/New%20Logo%203_14(1).png",
+    "interests": ["Justice", "Service", "Law"],
+    "tags": ["Volunteer", "Legal Aid", "Community"],
+    "timeCommitment": "6 months"
+  },
+  {
+    "category": "Computer Science & Technology",
+    "name": "Python Bootcamp for Middle Schoolers",
+    "description": "Create a beginner‑friendly curriculum and teach Python to younger students.",
+    "difficulty": "High",
+    "image": "https://talentbattle.in/_next/image?url=https%3A%2F%2Fmedia.talentbattle.in%2FFiles%2FC4U_Images%2FC4U_PACKAGES_IMAGES%2F1124%2Fproductthumbnails(5).png&w=750&q=75",
+    "interests": ["Education", "Python", "CS"],
+    "tags": ["Teaching", "Coding", "Curriculum"],
+    "timeCommitment": "4-8 months"
+  },
+  {
+    "category": "Computer Science & Technology",
+    "name": "Open Source Contribution",
+    "description": "Contribute to a GitHub open‑source project or start your own.",
+    "difficulty": "Very High",
+    "image": "https://i.pinimg.com/474x/6e/39/83/6e3983ef421a6536731ab1123d847d60.jpg",
+    "interests": ["Software Development", "Community", "Collaboration"],
+    "tags": ["Open Source", "Programming", "Teamwork"],
+    "timeCommitment": "6-12 months"
+  },
+  {
+    "category": "Computer Science & Technology",
+    "name": "AI Chatbot Development",
+    "description": "Build a chatbot that answers questions for a specific topic (e.g., school club FAQ).",
+    "difficulty": "High",
+    "image": "https://media.istockphoto.com/id/1445426863/vector/chat-bot-vector-logo-design-concept.jpg?s=612x612&w=0&k=20&c=XDdfzS4lNW9yxQ0BQGZq9KMLL4bJ8ywXlYdAhBSuoCA=",
+    "interests": ["AI", "NLP", "Development"],
+    "tags": ["AI", "Chatbot", "Innovation"],
+    "timeCommitment": "4-6 months"
+  },
+  {
+    "category": "Computer Science & Technology",
+    "name": "Cybersecurity Workshop Series",
+    "description": "Teach students how to stay safe online with basic cybersecurity tips.",
+    "difficulty": "Moderate",
+    "image": "https://safety.rsf.org/wp-content/uploads/2023/10/Cyber-security-workshop.png",
+    "interests": ["Cybersecurity", "Education", "Technology"],
+    "tags": ["Security", "Awareness", "Teaching"],
+    "timeCommitment": "3-4 months"
+  },
+  {
+    "category": "Computer Science & Technology",
+    "name": "Digital Art Generator with Code",
+    "description": "Code a generative art tool using JavaScript or Python (e.g., Turtle, p5.js).",
+    "difficulty": "High",
+    "image": "https://digitalcreator.ca/wp-content/uploads/2024/01/DCN_Logo_NoTag.png",
+    "interests": ["Creative Coding", "Art", "CS"],
+    "tags": ["Generative Art", "Coding", "Creative"],
+    "timeCommitment": "4-6 months"
+  },
+{
+  "category": "Statistics",
+  "name": "Mental Health Needs Assessment",
+  "description": "Design and analyze a student survey in collaboration with school counselors to identify unmet mental health needs. Use results to recommend new support systems or programming.",
+  "difficulty": "High",
+  "image": "https://images.squarespace-cdn.com/content/v1/63002b854574d41b27f43f0a/815d3dc1-07c8-4342-b435-526d519da935/401608381_301208869423563_2460397069595354869_n.jpg",
+  "interests": ["Mental Health", "Statistics", "Advocacy"],
+  "tags": ["Survey Design", "Student Wellbeing", "Policy Impact"],
+  "timeCommitment": "6-9 months"
+},
+{
+  "category": "Statistics",
+  "name": "Nonprofit Impact Metrics Program",
+  "description": "Help a local nonprofit develop metrics and simple analysis methods to evaluate their program outcomes and share that data with donors or stakeholders.",
+  "difficulty": "High",
+  "image": "https://static.wixstatic.com/media/b8ddbf_c45e22704e5c485b8f1f30cbd60bdda5~mv2.png/v1/fill/w_710,h_540,al_c,q_90/b8ddbf_c45e22704e5c485b8f1f30cbd60bdda5~mv2.png",
+  "interests": ["Evaluation", "Social Impact", "Statistics"],
+  "tags": ["Nonprofit", "Impact Evaluation", "Field Application"],
+  "timeCommitment": "6-8 months"
+},
+{
+  "category": "Statistics",
+  "name": "Myth-Busting with Local Data",
+  "description": "Pick a widely held misconception (like 'teens are always on their phones') and collect local data to statistically test and communicate the truth through infographics or a zine.",
+  "difficulty": "Moderate",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ml1OK9BGRbNWzrTXeEA6YrgTfA-kuHc0Kw&s",
+  "interests": ["Behavioral Data", "Critical Thinking", "Statistics"],
+  "tags": ["Surveys", "Infographics", "Awareness"],
+  "timeCommitment": "3-5 months"
+},
+{
+  "category": "Statistics",
+  "name": "Sports Analytics for School Teams",
+  "description": "Analyze your school's team data (e.g., basketball shot charts, running splits) to identify trends and provide strategy reports to coaches.",
+  "difficulty": "High",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDgNzt0JQRcjIxx6oDFXB8teWzcAN9TDf6Aw&s",
+  "interests": ["Sports", "Analytics", "Mathematics"],
+  "tags": ["Team Support", "Applied Math", "Performance"],
+  "timeCommitment": "6-8 months"
+},
+{
+    "category": "Statistics",
+    "name": "Math Fair Probability Booth",
+    "description": "Create interactive games or demos to teach students about probability and statistics at a school math fair.",
+    "difficulty": "Moderate",
+    "image": "https://math.xula.edu/MathFair/MathFair.png",
+    "interests": ["Probability", "Outreach", "Education"],
+    "tags": ["Math Fair", "Probability", "Engagement"],
+    "timeCommitment": "1-2 months"
+  }
+]
+
 
