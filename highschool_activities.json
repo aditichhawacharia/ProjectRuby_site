@@ -1,5 +1,16 @@
 [
     {
+      "name": "Techinance",
+      "category": "Extracurricular",
+      "collegeImpact": 4,
+      "description": "Cybersecurity certification overseen by college students from NYU and professors from UAA, awards 8+ volunteer hours. Sign Up: http://bit.ly/44sJwYK",
+      "difficulty": 2,
+      "interests": "STEM",
+      "tags": ["STEM", "Computer Science", "Coding", "Cybersecurity", "Programming"],
+      "timeCommitment": "Low",
+      "image": "https://techinance.wordpress.com/wp-content/uploads/2024/06/logo-image.jpg"
+    },
+    {
       "name": "Robotics Team",
       "category": "Extracurricular",
       "collegeImpact": 5,
